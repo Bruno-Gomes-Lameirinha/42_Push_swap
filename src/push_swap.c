@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgomes-l <bgomes-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/07 19:00:47 by bgomes-l          #+#    #+#             */
-/*   Updated: 2024/05/07 19:34:38 by bgomes-l         ###   ########.fr       */
+/*   Created: 2024/04/26 11:34:16 by bgomes-l          #+#    #+#             */
+/*   Updated: 2024/05/07 19:44:33 by bgomes-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../include/push_swap.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "../libft/libft.h"
-
-#endif
+int	main(int argc, char **argv)
+{
+	if (argc == 1)
+	{
+		ft_printf("%s", argv[0]);
+		exit(0);
+	}
+	else 
+		exit(1);
+	
+}
