@@ -20,8 +20,8 @@ void	string_to_number(char *argument)
 
 int	main(int argc, char **argv)
 {
-	if (argc == 1)
-		exit(0);
+	if (argc < 2)
+		exit(1);
 	else if (argc == 2)
 		string_to_number(argv[1]);
 	else

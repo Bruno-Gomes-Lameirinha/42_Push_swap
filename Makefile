@@ -13,21 +13,32 @@
 NAME		:= push_swap
 LIBFT		:= libft/libft.a
 LIBFT_PATH	:= ./libft
+SRC_PATH	:= ./src
 CFLAGS		:= -Wall -Wextra -Werror
+OBJECTS_PATH = ./obj
+HEADERS     := -I $(LIBFT_PATH)
 
-SRC_PUSH_SWAP = src/push_swap.c
+SRC_PUSH_SWAP = $(SRC_PATH)/push_swap.c $(SRC_PATH)/utils.c
+
+OBJS := $(addprefix $(OBJECTS_PATH)/, $(notdir $(SRC_PUSH_SWAP:.c=.o)))
 
 all: $(LIBFT) $(NAME) 
 
 $(LIBFT):
 	@make -C libft --no-print-directory
 
-$(NAME): $(SRC_PUSH_SWAP) $(LIBFT)
-	$(CC) $(CFLAGS) $(SRC_PUSH_SWAP) -Llibft -lft -o $(NAME)
+$(OBJECTS_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJECTS_PATH)
+	@echo "Compiling $<"
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
+
+$(NAME): $(OBJS) $(LIBFT)
+	@echo "Linking $@"
+	@$(CC) $(CFLAGS) -o $@ $(OBJS) -L$(LIBFT_PATH) -lft
 
 clean:
 	@echo "Removendo arquivos objeto..."
 	@rm -f $(LIBFT_PATH)/*.o 
+	@rm -f $(OBJECTS_PATH)/*.o 
 
 fclean: clean
 	@echo "Removendo executáveis e bibliotecas..."
