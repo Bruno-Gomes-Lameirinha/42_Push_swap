@@ -12,18 +12,43 @@
 
 #include "../include/push_swap.h"
 
-void	string_to_number(char *argument)
-{
-	ft_printf("pegar a lista dividi-la por espaço e transformar para int o char");
-	ft_printf("\n%s", argument);
-}
-
 int	main(int argc, char **argv)
 {
+	p_list	*stack_a;
+	p_list	*current;
+	p_list	*new;
+	int i;
+	char	**args;
+
+	i = 0;
+	stack_a = NULL ;
+	current = NULL;
 	if (argc < 2)
 		exit(1);
 	else if (argc == 2)
-		string_to_number(argv[1]);
+		args = ft_split(argv[1], ' ');
 	else
-		ft_printf("A lista é dividida");
+		args = argv;
+	while (args[i])
+	{
+		new = ft_lstnew_dbl(ft_atoi(args[i]));
+		stack_a = ft_lstadd_back_dbl(&stack_a, new);
+		i++;
+	}
+	current = stack_a;
+	while (current->next != NULL)
+	{
+		ft_printf("%d\n", *current->content);
+		current = current->next;
+	}
+	ft_printf("%d\n", *current->content);
+	while (current->prev != NULL)
+	{
+		ft_printf("%d\n", *current->prev->content);
+		current = current->prev;
+	}
+
+	if (argc == 2)
+		free(args);
+	return (0);
 }
