@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else
-		args = argv;
+		args = &argv[1];
 	while (args[i])
 	{
 		new = ft_lstnew_dbl(ft_atoi(args[i]));
@@ -42,13 +42,25 @@ int	main(int argc, char **argv)
 		current = current->next;
 	}
 	ft_printf("%d\n", *current->content);
+	/*
 	while (current->prev != NULL)
 	{
 		ft_printf("%d\n", *current->prev->content);
 		current = current->prev;
 	}
+	*/
+	ft_swap_a(&stack_a);
+	ft_printf("Depois do swap\n");
+	current = stack_a;
+	while (current->next != NULL)
+	{
+		ft_printf("%d\n", *current->content);
+		current = current->next;
+	}
+	ft_printf("%d\n", *current->content);
 
 	if (argc == 2)
 		free(args);
+	free(stack_a);
 	return (0);
 }

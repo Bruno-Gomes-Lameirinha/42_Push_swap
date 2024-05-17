@@ -26,5 +26,8 @@ typedef struct push_list
 
 p_list	*ft_lstadd_back_dbl(p_list **stack, p_list *new);
 p_list	*ft_lstnew_dbl(int data);
+p_list	*ft_swap_a(p_list **stack);
+p_list	*ft_swap_b(p_list **stack);
+p_list	*ft_swap_ss(p_list **stack_a, p_list **stack_b);
 
 #endif

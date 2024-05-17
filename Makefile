@@ -18,7 +18,7 @@ CFLAGS		:= -Wall -Wextra -Werror
 OBJECTS_PATH = ./obj
 HEADERS     := -I $(LIBFT_PATH)
 
-SRC_PUSH_SWAP = $(SRC_PATH)/push_swap.c $(SRC_PATH)/utils.c
+SRC_PUSH_SWAP = $(SRC_PATH)/push_swap.c $(SRC_PATH)/utils.c $(SRC_PATH)/moves.c
 
 OBJS := $(addprefix $(OBJECTS_PATH)/, $(notdir $(SRC_PUSH_SWAP:.c=.o)))
 

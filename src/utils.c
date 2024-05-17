@@ -38,3 +38,5 @@ p_list	*ft_lstnew_dbl(int data)
 	new_node->prev = NULL;
 	return(new_node);
 }
+
+
