@@ -1,0 +1,52 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/push_swap",
+            "args": ["12 24 36 42"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "logging": {
+                "trace": true,
+                "traceResponse": true,
+                "engineLogging": true
+            },
+            "sourceFileMap": {
+                "/build/glibc-OTsEL5/glibc-2.27": "${workspaceFolder}",
+                "/home/bruno/42sp/push_swap/src": "${workspaceFolder}/src",
+                "/home/bruno/42sp/push_swap/libft": "${workspaceFolder}/libft",
+                "/home/bruno/42sp/push_swap/include": "${workspaceFolder}/include"
+            },
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "stopAtEntry": false,
+            "sourceFileMap": {
+                "/home/bruno/42sp/push_swap/src": "${workspaceFolder}/src",
+                "/home/bruno/42sp/push_swap/libft": "${workspaceFolder}/libft",
+                "/home/bruno/42sp/push_swap/include": "${workspaceFolder}/include"
+            },
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}
