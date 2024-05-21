@@ -14,7 +14,7 @@ NAME		:= push_swap
 LIBFT		:= libft/libft.a
 LIBFT_PATH	:= ./libft
 SRC_PATH	:= ./src
-CFLAGS		:= -Wall -Wextra -Werror
+CFLAGS		:= -Wall -Wextra -Werror -g
 OBJECTS_PATH = ./obj
 HEADERS     := -I $(LIBFT_PATH)
 

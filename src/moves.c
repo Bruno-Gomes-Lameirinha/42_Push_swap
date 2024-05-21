@@ -50,8 +50,8 @@ p_list	*ft_swap_b(p_list **stack)
     return (*stack);
 }
 
-p_list	*ft_swap_ss(p_list **stack_a, p_list **stack_b)
+/*p_list	*ft_swap_ss(p_list **stack_a, p_list **stack_b)
 {
     ft_swap_b(p_list **stack);
     ft_swap_b(p_list **stack);
-}
+*/
