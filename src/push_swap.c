@@ -12,55 +12,70 @@
 
 #include "../include/push_swap.h"
 
-int	main(int argc, char **argv)
-{
-	p_list	*stack_a;
-	p_list	*current;
-	p_list	*new;
-	int i;
-	char	**args;
 
-	i = 0;
-	stack_a = NULL ;
-	current = NULL;
-	if (argc < 2)
-		exit(1);
-	else if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	else
-		args = &argv[1];
-	while (args[i])
-	{
-		new = ft_lstnew_dbl(ft_atoi(args[i]));
-		stack_a = ft_lstadd_back_dbl(&stack_a, new);
-		i++;
-	}
-	current = stack_a;
-	while (current->next != NULL)
-	{
-		ft_printf("%d\n", *current->content);
-		current = current->next;
-	}
-	ft_printf("%d\n", *current->content);
-	/*
-	while (current->prev != NULL)
-	{
-		ft_printf("%d\n", *current->prev->content);
-		current = current->prev;
-	}
-	*/
-	ft_swap_a(&stack_a);
-	ft_printf("Depois do swap\n");
-	current = stack_a;
-	while (current->next != NULL)
-	{
-		ft_printf("%d\n", *current->content);
-		current = current->next;
-	}
-	ft_printf("%d\n", *current->content);
+int main(int argc, char **argv) {
+    p_list *stack_a;
+    p_list *current;
+	p_list *stack_b;
+    p_list *new;
+    int i;
+    char **args;
 
-	if (argc == 2)
-		free(args);
-	free(stack_a);
-	return (0);
+    i = 0;
+    stack_a = NULL;
+	stack_b = NULL;
+    current = NULL;
+    if (argc < 2)
+        exit(1);
+    else if (argc == 2)
+        args = ft_split(argv[1], ' ');
+    else
+        args = &argv[1];
+    
+    while (args[i]) {
+        new = ft_lstnew_dbl(ft_atoi(args[i]));
+        stack_a = ft_lstadd_back_dbl(&stack_a, new);
+        i++;
+    }
+
+    ft_printf("Lista original:\n");
+    print_list(stack_a);
+
+    ft_swap_a(&stack_a);
+    ft_printf("Depois do swap:\n");
+    print_list(stack_a);
+
+    ft_rotate_a(&stack_a);
+    ft_printf("Depois do rotate:\n");
+    print_list(stack_a);
+
+	ft_rotate_a(&stack_a);
+    ft_printf("Depois do rotate:\n");
+    print_list(stack_a);
+
+	ft_reverse_rotate_a(&stack_a);
+    ft_printf("Depois do reverse rotate:\n");
+    print_list(stack_a);
+
+	ft_push_b(&stack_a, &stack_b);
+	ft_push_b(&stack_a, &stack_b);
+    ft_printf("Depois do push b:\n");
+    print_list(stack_a);
+	print_list(stack_b);
+
+    if (argc == 2)
+        free(args);
+
+    // Liberando a memória alocada
+    current = stack_a->next;
+    while (current != stack_a) {
+        p_list *temp = current;
+        current = current->next;
+        free(temp->content);
+        free(temp);
+    }
+    free(stack_a->content);
+    free(stack_a);
+
+    return 0;
 }

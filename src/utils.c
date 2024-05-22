@@ -1,42 +1,77 @@
 #include "../include/push_swap.h"
 
-p_list	*ft_lstadd_back_dbl(p_list **stack, p_list *new)
-{
-	p_list	*head;
-	p_list	*start;
-	
-	
-	if (*stack != NULL)
-	{
-		head = *stack;
-		start = *stack;
-		while (start->next)
-			start = start->next;
-		start->next = new;
-		new->prev = start;
-	}
-	else
-		head = new;
-	return (head);
-}
-p_list	*ft_lstnew_dbl(int data)
-{
-	p_list	*new_node;
-	int 	*ptr;
+p_list *ft_lstadd_back_dbl(p_list **stack, p_list *new) {
+    p_list *last;
 
-	new_node = malloc (sizeof (p_list));
-	if (new_node == NULL)
-		return (NULL);
-	ptr = malloc(sizeof(int));
+    if (stack == NULL || new == NULL)
+        return NULL;
+
+    if (*stack == NULL) {
+        *stack = new;
+        new->next = new;
+        new->prev = new;
+    } else {
+        last = (*stack)->prev;
+        last->next = new;
+        new->prev = last;
+        new->next = *stack;
+        (*stack)->prev = new;
+    }
+    return *stack;
+}
+
+p_list *ft_lstnew_dbl(int data) {
+    p_list *new_node;
+    int *ptr;
+
+    new_node = malloc(sizeof(p_list));
+    if (new_node == NULL)
+        return NULL;
+
+    ptr = malloc(sizeof(int));
     if (ptr == NULL) {
         free(new_node);
         return NULL;
     }
+
     *ptr = data;
     new_node->content = ptr;
-	new_node->next = NULL;
-	new_node->prev = NULL;
-	return(new_node);
+    new_node->next = NULL;
+    new_node->prev = NULL;
+
+    return new_node;
+}
+
+void print_list(p_list *stack) {
+    p_list *current;
+
+    if (stack == NULL)
+        return;
+
+    current = stack;
+    while (current->next != stack)
+	{
+        ft_printf("%d\n", *current->content);
+        current = current->next;
+	}
+	ft_printf("%d\n", *current->content);
 }
 
 
+void ft_lstadd_front_db(p_list **lst, p_list *new) 
+{
+    if (new != NULL) {
+        if (*lst == NULL) {
+            new->next = new;
+            new->prev = new;
+            *lst = new;
+        } else {
+            p_list *last = (*lst)->prev;
+            new->next = *lst;
+            new->prev = last;
+            last->next = new;
+            (*lst)->prev = new;
+            *lst = new;
+        }
+    }
+}
