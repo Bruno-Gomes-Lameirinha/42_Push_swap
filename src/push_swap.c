@@ -15,7 +15,7 @@
 
 int main(int argc, char **argv) {
     p_list *stack_a;
-    p_list *current;
+    //p_list *current;
 	p_list *stack_b;
     p_list *new;
     int i;
@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
     i = 0;
     stack_a = NULL;
 	stack_b = NULL;
-    current = NULL;
+   // current = NULL;
     if (argc < 2)
         exit(1);
     else if (argc == 2)
@@ -58,24 +58,17 @@ int main(int argc, char **argv) {
     print_list(stack_a);
 
 	ft_push_b(&stack_a, &stack_b);
-	ft_push_b(&stack_a, &stack_b);
+    ft_push_b(&stack_a, &stack_b);
+    ft_push_b(&stack_a, &stack_b);
+    ft_push_b(&stack_a, &stack_b);
     ft_printf("Depois do push b:\n");
+    ft_printf("stack_a\n");
     print_list(stack_a);
+    ft_printf("stack_b\n");
 	print_list(stack_b);
 
     if (argc == 2)
         free(args);
-
-    // Liberando a memória alocada
-    current = stack_a->next;
-    while (current != stack_a) {
-        p_list *temp = current;
-        current = current->next;
-        free(temp->content);
-        free(temp);
-    }
-    free(stack_a->content);
-    free(stack_a);
 
     return 0;
 }

@@ -1,6 +1,7 @@
 #include "../include/push_swap.h"
 
 p_list *ft_lstadd_back_dbl(p_list **stack, p_list *new) {
+    
     p_list *last;
 
     if (stack == NULL || new == NULL)
@@ -21,6 +22,7 @@ p_list *ft_lstadd_back_dbl(p_list **stack, p_list *new) {
 }
 
 p_list *ft_lstnew_dbl(int data) {
+    
     p_list *new_node;
     int *ptr;
 
@@ -60,17 +62,19 @@ void print_list(p_list *stack) {
 
 void ft_lstadd_front_db(p_list **lst, p_list *new) 
 {
+    p_list *last;
+
     if (new != NULL) {
         if (*lst == NULL) {
             new->next = new;
             new->prev = new;
             *lst = new;
         } else {
-            p_list *last = (*lst)->prev;
-            new->next = *lst;
+            last = (*lst)->prev;
             new->prev = last;
             last->next = new;
-            (*lst)->prev = new;
+            last->prev = (*lst)->prev->prev;
+            new->next = (*lst);
             *lst = new;
         }
     }
