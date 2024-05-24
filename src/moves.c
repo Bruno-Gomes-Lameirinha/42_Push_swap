@@ -83,7 +83,6 @@ p_list *ft_push_b(p_list **stack_a, p_list **stack_b)
 
 	if (stack_a == NULL || *stack_a == NULL)
 		return NULL;
-
 	node_to_push = *stack_a;
 	if (node_to_push->next == node_to_push)
 		new_head = NULL;
@@ -98,7 +97,8 @@ p_list *ft_push_b(p_list **stack_a, p_list **stack_b)
 	node_to_push->prev = NULL;
 	*stack_a = new_head;
 	ft_lstadd_front_db(stack_b, node_to_push);
-	
 	*stack_b = node_to_push;
+	ft_printf("pb");
 	return *stack_a;
 }
+

@@ -21,27 +21,25 @@ p_list *ft_lstadd_back_dbl(p_list **stack, p_list *new) {
     return *stack;
 }
 
-p_list *ft_lstnew_dbl(int data) {
-    
+p_list *ft_lstnew_dbl(int data, int pos) 
+{    
     p_list *new_node;
     int *ptr;
 
     new_node = malloc(sizeof(p_list));
     if (new_node == NULL)
         return NULL;
-
     ptr = malloc(sizeof(int));
     if (ptr == NULL) {
         free(new_node);
         return NULL;
     }
-
     *ptr = data;
+    new_node->position = pos;
     new_node->content = ptr;
     new_node->next = NULL;
     new_node->prev = NULL;
-
-    return new_node;
+    return (new_node);
 }
 
 void print_list(p_list *stack) {
@@ -53,10 +51,10 @@ void print_list(p_list *stack) {
     current = stack;
     while (current->next != stack)
 	{
-        ft_printf("%d\n", *current->content);
+        ft_printf("%d  %d\n", *current->content, current->position);
         current = current->next;
 	}
-	ft_printf("%d\n", *current->content);
+	ft_printf("%d  %d\n", *current->content, current->position);
 }
 
 
