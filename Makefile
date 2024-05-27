@@ -27,6 +27,9 @@ all: $(LIBFT) $(NAME)
 $(LIBFT):
 	@make -C libft --no-print-directory
 
+$(OBJECTS_PATH):
+	@mkdir -p $(OBJECTS_PATH)
+
 $(OBJECTS_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJECTS_PATH)
 	@echo "Compiling $<"
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
@@ -38,7 +41,8 @@ $(NAME): $(OBJS) $(LIBFT)
 clean:
 	@echo "Removendo arquivos objeto..."
 	@rm -f $(LIBFT_PATH)/*.o 
-	@rm -f $(OBJECTS_PATH)/*.o 
+	@rm -f $(OBJECTS_PATH)/*.o
+	@rm -rf $(OBJECTS_PATH)
 
 fclean: clean
 	@echo "Removendo executáveis e bibliotecas..."
