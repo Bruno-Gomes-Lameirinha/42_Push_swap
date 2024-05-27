@@ -21,7 +21,7 @@ p_list *ft_lstadd_back_dbl(p_list **stack, p_list *new) {
     return *stack;
 }
 
-p_list *ft_lstnew_dbl(int data, int pos) 
+p_list *ft_lstnew_dbl(int data) 
 {    
     p_list *new_node;
     int *ptr;
@@ -35,7 +35,6 @@ p_list *ft_lstnew_dbl(int data, int pos)
         return NULL;
     }
     *ptr = data;
-    new_node->position = pos;
     new_node->content = ptr;
     new_node->next = NULL;
     new_node->prev = NULL;
@@ -76,4 +75,37 @@ void ft_lstadd_front_db(p_list **lst, p_list *new)
             *lst = new;
         }
     }
+}
+
+
+void	ft_update_pos(p_list **stack)
+{
+	p_list	*current;
+	int		i;
+
+	i = 1;
+	current = *stack;
+	while(current->next != *stack)
+	{
+		current->position = i;
+		i++;
+		current = current->next;
+	}
+	current->position = i;
+}
+
+void	ft_set_index(p_list **stack)
+{
+	p_list	*current;
+	int		i;
+
+	i = 1;
+	current = *stack;
+	while(current->next != *stack)
+	{
+		current->position = i;
+		i++;
+		current = current->next;
+	}
+	current->position = i;
 }

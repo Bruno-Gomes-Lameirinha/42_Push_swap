@@ -32,28 +32,33 @@ int main(int argc, char **argv)
         args = &argv[1];
     
     while (args[i]) {
-        new = ft_lstnew_dbl(ft_atoi(args[i]), i);
+        new = ft_lstnew_dbl(ft_atoi(args[i]));
         stack_a = ft_lstadd_back_dbl(&stack_a, new);
         i++;
     }
 
     ft_printf("Lista original:\n");
+    ft_update_pos(&stack_a);
     print_list(stack_a);
 
     ft_swap_a(&stack_a);
+    ft_update_pos(&stack_a);
     ft_printf("Depois do swap:\n");
     print_list(stack_a);
 
     ft_rotate_a(&stack_a);
+    ft_update_pos(&stack_a);
     ft_printf("Depois do rotate:\n");
     print_list(stack_a);
 
 	ft_rotate_a(&stack_a);
     ft_printf("Depois do rotate:\n");
+    ft_update_pos(&stack_a);
     print_list(stack_a);
 
 	ft_reverse_rotate_a(&stack_a);
     ft_printf("Depois do reverse rotate:\n");
+    ft_update_pos(&stack_a);
     print_list(stack_a);
 
 	ft_push_b(&stack_a, &stack_b);
@@ -61,6 +66,8 @@ int main(int argc, char **argv)
     ft_push_b(&stack_a, &stack_b);
     ft_push_b(&stack_a, &stack_b);
     ft_push_b(&stack_b, &stack_a);
+    ft_update_pos(&stack_a);
+     ft_update_pos(&stack_b);
     ft_printf("Depois do push b:\n");
     ft_printf("stack_a\n");
     print_list(stack_a);

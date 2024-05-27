@@ -27,7 +27,7 @@ typedef struct push_list
 }	p_list;
 
 p_list	*ft_lstadd_back_dbl(p_list **stack, p_list *new);
-p_list *ft_lstnew_dbl(int data, int pos);
+p_list *ft_lstnew_dbl(int data);
 p_list	*ft_swap_a(p_list **stack);
 p_list	*ft_swap_b(p_list **stack);
 p_list	*ft_swap_ss(p_list **stack_a, p_list **stack_b);
@@ -36,5 +36,6 @@ void	print_list(p_list *stack);
 p_list 	*ft_reverse_rotate_a(p_list **stack);
 p_list 	*ft_push_b(p_list **stack_a, p_list **stack_b);
 void	ft_lstadd_front_db(p_list **lst, p_list *new);
+void	ft_update_pos(p_list **stack);
 
 #endif
