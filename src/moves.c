@@ -1,104 +1,103 @@
 #include "../include/push_swap.h"
 
-p_list *ft_swap_a(p_list **stack) {
-	p_list *first;
-	p_list *second;
+p_list *ft_swap_a(t_stack_info *info) {
+    p_list *first;
+    p_list *second;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		return NULL;
+    if (info == NULL || info->stack == NULL || info->stack->next == NULL)
+        return NULL;
 
-	first = *stack;
-	second = first->next;
+    first = info->stack;
+    second = first->next;
 
-	first->next = second->next;
-	if (second->next != NULL)
-		second->next->prev = first;
-	second->next = first;
-	second->prev = first->prev;
-	first->prev->next = second;
-	first->prev = second;
+    first->next = second->next;
+    if (second->next != NULL)
+        second->next->prev = first;
+    second->next = first;
+    second->prev = first->prev;
+    first->prev->next = second;
+    first->prev = second;
 
-	*stack = second;
+    info->stack = second;
 
-	ft_printf("sa\n");
-
-	return *stack;
+    ft_printf("sa\n");
+    return info->stack;
 }
 
-p_list	*ft_swap_b(p_list **stack)
-{
-	p_list *first;
-	p_list *second;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		return NULL;
+p_list *ft_swap_b(t_stack_info *info) {
+    p_list *first;
+    p_list *second;
 
-	first = *stack;
-	second = first->next;
+    if (info == NULL || info->stack == NULL || info->stack->next == NULL)
+        return NULL;
 
-	first->next = second->next;
-	second->next = first;
-	second->prev = first->prev;
-	first->prev = second;
+    first = info->stack;
+    second = first->next;
 
-	if (first->next != NULL)
-		first->next->prev = first;
+    first->next = second->next;
+    if (second->next != NULL)
+        second->next->prev = first;
+    second->next = first;
+    second->prev = first->prev;
+    first->prev->next = second;
+    first->prev = second;
 
-	*stack = second;
-	ft_printf("sb\n");
+    info->stack = second;
 
-	return (*stack);
+    ft_printf("sb\n");
+    return info->stack;
 }
 
-p_list *ft_rotate_a(p_list **stack) 
-{
-	p_list *first;
+p_list *ft_rotate_a(t_stack_info *info) {
+    p_list *first;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		return NULL;
-	first = *stack;
-	*stack = first->next; 
-	ft_printf("ra\n");
-	return *stack;
+    if (info == NULL || info->stack == NULL || info->stack->next == NULL)
+        return NULL;
+
+    first = info->stack;
+    info->stack = first->next;
+
+    ft_printf("ra\n");
+    return info->stack;
 }
 
-p_list *ft_reverse_rotate_a(p_list **stack) 
-{
-	p_list *first;
+p_list *ft_reverse_rotate_a(t_stack_info *info) {
+    p_list *first;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		return NULL;
+    if (info == NULL || info->stack == NULL || info->stack->next == NULL)
+        return NULL;
 
-	first = *stack;
-	*stack = first->prev; 
-	ft_printf("ra\n");
+    first = info->stack;
+    info->stack = first->prev;
 
-	return *stack;
+    ft_printf("rra\n");
+    return info->stack;
 }
 
-p_list *ft_push_b(p_list **stack_a, p_list **stack_b) 
-{
-	p_list *node_to_push;
-	p_list *new_head;
+p_list *ft_push_b(t_stack_info *info_a, t_stack_info *info_b) {
+    p_list *node_to_push;
+    p_list *new_head;
 
-	if (stack_a == NULL || *stack_a == NULL)
-		return NULL;
-	node_to_push = *stack_a;
-	if (node_to_push->next == node_to_push)
-		new_head = NULL;
-	else
-	{
-		new_head = node_to_push->next;
-		new_head->prev = node_to_push->prev;
-		new_head->next = node_to_push->next->next;
-		node_to_push->prev->next = new_head;
-	}
-	node_to_push->next = NULL;
-	node_to_push->prev = NULL;
-	*stack_a = new_head;
-	ft_lstadd_front_db(stack_b, node_to_push);
-	*stack_b = node_to_push;
-	ft_printf("pb");
-	return *stack_a;
+    if (info_a == NULL || info_a->stack == NULL)
+        return NULL;
+
+    node_to_push = info_a->stack;
+    if (node_to_push->next == node_to_push)
+        new_head = NULL;
+    else
+    {
+        new_head = node_to_push->next;
+        new_head->prev = node_to_push->prev;
+        new_head->next = node_to_push->next->next;
+        node_to_push->prev->next = new_head;
+    }
+    node_to_push->next = NULL;
+    node_to_push->prev = NULL;
+    info_a->stack = new_head;
+    ft_lstadd_front_db(&(info_b->stack), node_to_push);
+    info_b->stack = node_to_push;
+    ft_printf("pb\n");
+    return info_a->stack;
 }
 

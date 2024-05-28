@@ -12,18 +12,17 @@
 
 #include "../include/push_swap.h"
 
-
 int main(int argc, char **argv) 
 {
-    p_list *stack_a;
-	p_list *stack_b;
+    t_stack_info stack_a;
+    t_stack_info stack_b;
     p_list *new;
     int i;
     char **args;
 
     i = 0;
-    stack_a = NULL;
-	stack_b = NULL;
+    stack_a.stack = NULL;
+    stack_b.stack = NULL;
     if (argc < 2)
         exit(1);
     else if (argc == 2)
@@ -33,46 +32,52 @@ int main(int argc, char **argv)
     
     while (args[i]) {
         new = ft_lstnew_dbl(ft_atoi(args[i]));
-        stack_a = ft_lstadd_back_dbl(&stack_a, new);
+        stack_a.stack = ft_lstadd_back_dbl(&(stack_a.stack), new);
         i++;
     }
 
+    ft_update_min_max(&stack_a);
+    ft_set_index(&stack_a);
+
     ft_printf("Lista original:\n");
-    ft_update_pos(&stack_a);
-    print_list(stack_a);
+    ft_update_pos(&(stack_a.stack));
+    ft_print_list(&stack_a);
+
+    ft_printf("Maior valor na stack: %d\n", stack_a.max);
+    ft_printf("Menor valor na stack: %d\n", stack_a.min);
 
     ft_swap_a(&stack_a);
-    ft_update_pos(&stack_a);
+    ft_update_pos(&(stack_a.stack));
     ft_printf("Depois do swap:\n");
-    print_list(stack_a);
+    ft_print_list(&stack_a);
 
     ft_rotate_a(&stack_a);
-    ft_update_pos(&stack_a);
+    ft_update_pos(&(stack_a.stack));
     ft_printf("Depois do rotate:\n");
-    print_list(stack_a);
+    ft_print_list(&stack_a);
 
-	ft_rotate_a(&stack_a);
+    ft_rotate_a(&stack_a);
     ft_printf("Depois do rotate:\n");
-    ft_update_pos(&stack_a);
-    print_list(stack_a);
+    ft_update_pos(&(stack_a.stack));
+    ft_print_list(&stack_a);
 
-	ft_reverse_rotate_a(&stack_a);
+    ft_reverse_rotate_a(&stack_a);
     ft_printf("Depois do reverse rotate:\n");
-    ft_update_pos(&stack_a);
-    print_list(stack_a);
+    ft_update_pos(&(stack_a.stack));
+    ft_print_list(&stack_a);
 
-	ft_push_b(&stack_a, &stack_b);
     ft_push_b(&stack_a, &stack_b);
     ft_push_b(&stack_a, &stack_b);
     ft_push_b(&stack_a, &stack_b);
-    ft_push_b(&stack_b, &stack_a);
-    ft_update_pos(&stack_a);
-     ft_update_pos(&stack_b);
+    ft_push_b(&stack_a, &stack_b);
+    ft_push_b(&stack_a, &stack_b);
+    ft_update_pos(&(stack_a.stack));
+    ft_update_pos(&(stack_b.stack));
     ft_printf("Depois do push b:\n");
     ft_printf("stack_a\n");
-    print_list(stack_a);
+    ft_print_list(&stack_a);
     ft_printf("stack_b\n");
-	print_list(stack_b);
+    ft_print_list(&stack_b);
 
     if (argc == 2)
         free(args);

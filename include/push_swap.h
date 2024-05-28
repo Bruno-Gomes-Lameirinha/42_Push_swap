@@ -26,16 +26,25 @@ typedef struct push_list
 	struct push_list	*next;
 }	p_list;
 
-p_list	*ft_lstadd_back_dbl(p_list **stack, p_list *new);
-p_list *ft_lstnew_dbl(int data);
-p_list	*ft_swap_a(p_list **stack);
-p_list	*ft_swap_b(p_list **stack);
-p_list	*ft_swap_ss(p_list **stack_a, p_list **stack_b);
-p_list	*ft_rotate_a(p_list **stack);
-void	print_list(p_list *stack);
-p_list 	*ft_reverse_rotate_a(p_list **stack);
-p_list 	*ft_push_b(p_list **stack_a, p_list **stack_b);
-void	ft_lstadd_front_db(p_list **lst, p_list *new);
-void	ft_update_pos(p_list **stack);
+typedef struct stack_info
+{
+    p_list  *stack;
+    int     min;
+    int     max;
+}   t_stack_info;
+
+p_list  *ft_lstadd_back_dbl(p_list **stack, p_list *new);
+p_list  *ft_lstnew_dbl(int data);
+p_list  *ft_swap_a(t_stack_info *info);
+p_list  *ft_swap_b(t_stack_info *info);
+p_list  *ft_swap_ss(t_stack_info *info_a, t_stack_info *info_b);
+p_list  *ft_rotate_a(t_stack_info *info);
+p_list  *ft_reverse_rotate_a(t_stack_info *info);
+p_list  *ft_push_b(t_stack_info *info_a, t_stack_info *info_b);
+void    ft_lstadd_front_db(p_list **lst, p_list *new);
+void    ft_update_pos(p_list **stack);
+void    ft_update_min_max(t_stack_info *info);
+void    ft_print_list(t_stack_info *info);
+void 	ft_set_index(t_stack_info *info);
 
 #endif
