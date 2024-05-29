@@ -12,6 +12,26 @@
 
 #include "../include/push_swap.h"
 
+int is_sorted(p_list *stack) 
+{
+    p_list *current;
+    p_list *start;
+
+    if (stack == NULL || stack->next == stack) {
+        return 1;
+    }
+    start = stack;
+    current = stack;
+    while (current->next != start) {
+        if (*current->content > *current->next->content) {
+            return 0;
+        }
+        current = current->next;
+    }
+    return 1;
+}
+
+
 int main(int argc, char **argv) 
 {
     t_stack_info stack_a;
@@ -78,6 +98,8 @@ int main(int argc, char **argv)
     ft_print_list(&stack_a);
     ft_printf("stack_b\n");
     ft_print_list(&stack_b);
+    ft_printf("a len da stack a é %d\n", (ft_lstsize_db(&stack_a)));
+    ft_printf("a len da stack b é %d\n", (ft_lstsize_db(&stack_b)));
 
     if (argc == 2)
         free(args);

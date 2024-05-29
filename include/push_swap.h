@@ -29,6 +29,7 @@ typedef struct push_list
 typedef struct stack_info
 {
     p_list  *stack;
+	int     len;
     int     min;
     int     max;
 }   t_stack_info;
@@ -46,5 +47,7 @@ void    ft_update_pos(p_list **stack);
 void    ft_update_min_max(t_stack_info *info);
 void    ft_print_list(t_stack_info *info);
 void 	ft_set_index(t_stack_info *info);
+int		ft_lstsize_db(t_stack_info *info);
+int 	ft_is_sorted(p_list *stack);
 
 #endif

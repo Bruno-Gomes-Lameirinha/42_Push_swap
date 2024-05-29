@@ -97,10 +97,11 @@ void ft_update_min_max(t_stack_info *info)
 {
     int min;
     int max;
+    p_list *current;
 
     if (info->stack == NULL)
         return;
-    p_list *current = info->stack;
+    current = info->stack;
     min = *(current->content);
     max = *(current->content);
 
@@ -154,3 +155,21 @@ void ft_set_index(t_stack_info *info)
     }
 }
 
+int	ft_lstsize_db(t_stack_info *info)
+{
+	int		i;
+	p_list	*current;
+
+	current = info->stack;
+	i = 0;
+	if (info->stack != NULL)
+	{
+		while (current->next != info->stack)
+		{
+			current = current->next;
+			i++;
+		}
+        i++;
+	}
+	return (i);
+}
