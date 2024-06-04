@@ -32,6 +32,7 @@ typedef struct stack_info
 	int     len;
     int     min;
     int     max;
+	char	letter;
 }   t_stack_info;
 
 p_list  *ft_lstadd_back_dbl(p_list **stack, p_list *new);
@@ -49,5 +50,11 @@ void    ft_print_list(t_stack_info *info);
 void 	ft_set_index(t_stack_info *info);
 int		ft_lstsize_db(t_stack_info *info);
 int 	ft_is_sorted(p_list *stack);
+void    ft_tiny_sort(t_stack_info *info);
+void    ft_update_stack(t_stack_info *info_a, t_stack_info *info_b);
+p_list *ft_rotate_b(t_stack_info *info);
+p_list *ft_reverse_rotate_b(t_stack_info *info);
+p_list *ft_push_a(t_stack_info *info_a, t_stack_info *info_b);
+void    ft_set_stack(t_stack_info *info_a, t_stack_info *info_b);
 
 #endif

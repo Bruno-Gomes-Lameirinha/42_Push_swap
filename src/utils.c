@@ -173,3 +173,10 @@ int	ft_lstsize_db(t_stack_info *info)
 	}
 	return (i);
 }
+
+void    ft_set_stack(t_stack_info *info_a, t_stack_info *info_b)
+{
+    ft_set_index(info_a);
+    info_a->letter = 'a';
+    info_b->letter = 'b';
+}
