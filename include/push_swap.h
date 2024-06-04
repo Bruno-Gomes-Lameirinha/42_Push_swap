@@ -21,6 +21,7 @@ typedef struct push_list
 {
 	int					*content;
 	int					index;
+	int					cost;
 	int					position;
 	struct push_list	*prev;
 	struct push_list	*next;
@@ -37,8 +38,7 @@ typedef struct stack_info
 
 p_list  *ft_lstadd_back_dbl(p_list **stack, p_list *new);
 p_list  *ft_lstnew_dbl(int data);
-p_list  *ft_swap_a(t_stack_info *info);
-p_list  *ft_swap_b(t_stack_info *info);
+void 	ft_swap(t_stack_info *info); 
 p_list  *ft_swap_ss(t_stack_info *info_a, t_stack_info *info_b);
 p_list  *ft_rotate_a(t_stack_info *info);
 p_list  *ft_reverse_rotate_a(t_stack_info *info);
@@ -56,5 +56,7 @@ p_list *ft_rotate_b(t_stack_info *info);
 p_list *ft_reverse_rotate_b(t_stack_info *info);
 p_list *ft_push_a(t_stack_info *info_a, t_stack_info *info_b);
 void    ft_set_stack(t_stack_info *info_a, t_stack_info *info_b);
+void    ft_get_cost(t_stack_info *info_a, t_stack_info *info_b);
+p_list *ft_find_next_index(t_stack_info *info_a, p_list *current);
 
 #endif

@@ -1,15 +1,14 @@
 #include "../include/push_swap.h"
 
-p_list *ft_swap_a(t_stack_info *info) {
+void    ft_swap(t_stack_info *info) 
+{
     p_list *first;
     p_list *second;
 
     if (info == NULL || info->stack == NULL || info->stack->next == NULL)
-        return NULL;
-
+        return;
     first = info->stack;
     second = first->next;
-
     first->next = second->next;
     if (second->next != NULL)
         second->next->prev = first;
@@ -17,36 +16,11 @@ p_list *ft_swap_a(t_stack_info *info) {
     second->prev = first->prev;
     first->prev->next = second;
     first->prev = second;
-
     info->stack = second;
-
-    ft_printf("sa\n");
-    return info->stack;
-}
-
-
-p_list *ft_swap_b(t_stack_info *info) {
-    p_list *first;
-    p_list *second;
-
-    if (info == NULL || info->stack == NULL || info->stack->next == NULL)
-        return NULL;
-
-    first = info->stack;
-    second = first->next;
-
-    first->next = second->next;
-    if (second->next != NULL)
-        second->next->prev = first;
-    second->next = first;
-    second->prev = first->prev;
-    first->prev->next = second;
-    first->prev = second;
-
-    info->stack = second;
-
-    ft_printf("sb\n");
-    return info->stack;
+    if (info->letter == 'a')
+        ft_printf("sa\n");
+    else
+        ft_printf("sb\n");
 }
 
 p_list *ft_rotate_a(t_stack_info *info) {

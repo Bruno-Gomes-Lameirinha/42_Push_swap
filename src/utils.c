@@ -52,7 +52,7 @@ void ft_print_list(t_stack_info *info)
         ft_printf("%d  %d  index:%d\n", *current->content, current->position, current->index);
         current = current->next;
     }
-    ft_printf("%d  %d  index:%d\n", *current->content, current->position, current->index);
+    ft_printf("%d  %d  index:%d cost:%d\n", *current->content, current->position, current->index, current->cost);
 }
 
 void ft_lstadd_front_db(p_list **lst, p_list *new) 
@@ -83,7 +83,7 @@ void ft_update_pos(p_list **stack) {
     if (stack == NULL || *stack == NULL)
         return;
 
-    i = 1;
+    i = 0;
     current = *stack;
     while (current->next != *stack) {
         current->position = i;
@@ -179,4 +179,53 @@ void    ft_set_stack(t_stack_info *info_a, t_stack_info *info_b)
     ft_set_index(info_a);
     info_a->letter = 'a';
     info_b->letter = 'b';
+}
+void    ft_get_cost(t_stack_info *info_a, t_stack_info *info_b)
+{
+    p_list	*current_b;
+    p_list	*next_index;
+
+    current_b = info_b->stack;
+    // custo de b é se a position fo menor do que len / 2 então o custo é a position
+    // se a position for maior que len / 2 aí o custo é len - position + 1 (o mov de jogar para topo).
+    while (current_b->next != info_b->stack)
+    {
+        next_index = ft_find_next_index(info_a, current_b);
+        if(next_index->position < (info_a->len / 2))
+            next_index->cost = next_index->position;
+        else
+            next_index->cost = info_a->len - next_index->position;
+        if(current_b->position < (info_b->len / 2))
+            current_b->cost = ((current_b->position) + next_index->cost);
+        else
+            current_b->cost = ((info_b->len - current_b->position)+ next_index->cost);
+        current_b = current_b->next;
+    }
+    next_index = ft_find_next_index(info_a, current_b);
+    if(next_index->position < (info_a->len / 2))
+        next_index->cost = next_index->position;
+    else
+        next_index->cost = info_a->len - next_index->position;
+    if(current_b->position < (info_b->len / 2))
+        current_b->cost = ((current_b->position) + next_index->cost);
+    else
+        current_b->cost = ((info_b->len - current_b->position)+ next_index->cost);
+}
+p_list *ft_find_next_index(t_stack_info *info_a, p_list *current)
+{
+    p_list *current_a;
+    p_list *searcher;
+
+    current_a = info_a->stack;
+    searcher = NULL;
+    while (current_a->next != info_a->stack)
+    {
+        if (current_a->index > current->index && searcher == NULL)
+            searcher = current_a;
+        if (current_a->index > current->index && current_a->index < searcher->index)
+            searcher = current_a;
+        current_a = current_a->next;
+    }
+    ft_printf("O index acima do %d é o %d \n", current->index, searcher->index);
+    return(searcher);
 }

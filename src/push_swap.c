@@ -39,11 +39,11 @@ void    ft_tiny_sort(t_stack_info *info)
         ft_rotate_a(info);
     if(*info->stack->content < *info->stack->next->content && info->max == *info->stack->next->content)
         {
-            ft_swap_a(info);
+            ft_swap(info);
             ft_rotate_a(info);
         }
     if(*info->stack->content > *info->stack->next->content)
-        ft_swap_a(info);
+        ft_swap(info);
 }
 
 void    ft_update_stack(t_stack_info *info_a, t_stack_info *info_b)
@@ -79,8 +79,6 @@ int main(int argc, char **argv)
         stack_a.stack = ft_lstadd_back_dbl(&(stack_a.stack), new);
         i++;
     }
-    ft_printf("a len da stack b é %d\n", (ft_lstsize_db(&stack_b)));
-    ft_printf("a len da stack a é %d\n", (ft_lstsize_db(&stack_a)));
     if(!ft_is_sorted(stack_a.stack))
     {
         ft_printf("Não esta ordenada\n");
@@ -90,25 +88,25 @@ int main(int argc, char **argv)
 
     ft_set_stack(&stack_a, &stack_b);
     
-    ft_print_list(&stack_a);
     ft_update_stack(&stack_a,  &stack_b);
     while (stack_a.len > 3)
     {
-        ft_push_b(&stack_a, &stack_b);
+        ft_push_a(&stack_a, &stack_b);
         ft_update_stack(&stack_a, &stack_b);
     }
-    ft_printf("Depois do while\n");
     ft_tiny_sort(&stack_a);
     ft_printf("Depois do tiny sort\n");
     ft_update_stack(&stack_a, &stack_b);
+    ft_printf("stack a af\n");
     ft_print_list(&stack_a);
     ft_printf("stack b\n");
     ft_print_list(&stack_b);
-    ft_push_a(&stack_b, &stack_a);
-    ft_printf("depois do push_a\n");
-    ft_update_stack(&stack_a, &stack_b);
+    ft_get_cost(&stack_a, &stack_b);
+    ft_printf("stack a\n");
     ft_print_list(&stack_a);
+    ft_printf("stack b\n");
     ft_print_list(&stack_b);
+    
     if (argc == 2)
         free(args);
 
