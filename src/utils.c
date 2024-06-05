@@ -55,22 +55,24 @@ void ft_print_list(t_stack_info *info)
     ft_printf("content %d  pos: %d  index: %d cost: %d\n", *current->content, current->position, current->index, current->cost);
 }
 
-void ft_lstadd_front_db(p_list **lst, p_list *new) 
+void    ft_lstadd_front_db(t_stack_info *info, p_list *new) 
 {
     p_list *last;
 
-    if (new != NULL) {
-        if (*lst == NULL) {
+    if (new != NULL) 
+    {
+        if (info->stack == NULL) {
             new->next = new;
             new->prev = new;
-            *lst = new;
-        } else {
-            last = (*lst)->prev;
+            info->stack = new;
+        } else 
+        {
+            last = info->stack->prev;
+            new->next = info->stack;
             new->prev = last;
             last->next = new;
-            last->prev = (*lst)->prev->prev;
-            new->next = (*lst);
-            *lst = new;
+            info->stack->prev = new;
+            info->stack = new;
         }
     }
 }
@@ -202,7 +204,6 @@ void    ft_get_cost(t_stack_info *info_a, t_stack_info *info_b)
             current_b->cost = ((current_b->position) + next_index->cost);
         else
             current_b->cost = ((info_b->len - current_b->position)+ next_index->cost);
-        ft_printf("Node at position %d has cost %d\n", current_b->position, current_b->cost);
         current_b = current_b->next;
     }
 }
@@ -221,6 +222,5 @@ p_list *ft_find_next_index(t_stack_info *info_a, p_list *current)
             searcher = current_a;
         current_a = current_a->next;
     }
-    ft_printf("O index acima do %d é o %d \n", current->index, searcher->index);
     return(searcher);
 }

@@ -6,7 +6,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/push_swap",
-            "args": ["12 24 36 42"],
+            "args": ["12 9 30 50 4 70"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

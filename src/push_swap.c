@@ -79,7 +79,7 @@ int main(int argc, char **argv)
         stack_a.stack = ft_lstadd_back_dbl(&(stack_a.stack), new);
         i++;
     }
-    if(!ft_is_sorted(stack_a.stack))
+    if(!ft_is_sorted(stack_a.stack) && stack_b.stack != NULL)
     {
         ft_printf("Não esta ordenada\n");
     }
@@ -87,7 +87,6 @@ int main(int argc, char **argv)
         ft_printf("esta ordenada\n");
 
     ft_set_stack(&stack_a, &stack_b);
-    
     ft_update_stack(&stack_a,  &stack_b);
     while (stack_a.len > 3)
     {
@@ -130,6 +129,13 @@ int main(int argc, char **argv)
     ft_print_list(&stack_b);
 
     ft_push_a(&stack_a, &stack_b);
+    ft_printf("stack a\n");
+    ft_print_list(&stack_a);
+    ft_printf("stack b\n");
+    ft_print_list(&stack_b);
+    ft_reverse_rotate_a(&stack_a);
+    ft_reverse_rotate_a(&stack_a);
+
     ft_printf("stack a\n");
     ft_print_list(&stack_a);
     ft_printf("stack b\n");
