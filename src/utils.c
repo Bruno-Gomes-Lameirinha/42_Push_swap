@@ -49,10 +49,10 @@ void ft_print_list(t_stack_info *info)
     current = info->stack;
     while (current->next != info->stack)
     {
-        ft_printf("%d  %d  index:%d\n", *current->content, current->position, current->index);
+        ft_printf("content %d  pos: %d  index: %d cost: %d\n", *current->content, current->position, current->index, current->cost);
         current = current->next;
     }
-    ft_printf("%d  %d  index:%d cost:%d\n", *current->content, current->position, current->index, current->cost);
+    ft_printf("content %d  pos: %d  index: %d cost: %d\n", *current->content, current->position, current->index, current->cost);
 }
 
 void ft_lstadd_front_db(p_list **lst, p_list *new) 
@@ -184,12 +184,15 @@ void    ft_get_cost(t_stack_info *info_a, t_stack_info *info_b)
 {
     p_list	*current_b;
     p_list	*next_index;
+    int     first_node_processed;
 
     current_b = info_b->stack;
+    first_node_processed = 0;
     // custo de b é se a position fo menor do que len / 2 então o custo é a position
     // se a position for maior que len / 2 aí o custo é len - position + 1 (o mov de jogar para topo).
-    while (current_b->next != info_b->stack)
+    while (current_b != info_b->stack || !first_node_processed)
     {
+        first_node_processed = 1; 
         next_index = ft_find_next_index(info_a, current_b);
         if(next_index->position < (info_a->len / 2))
             next_index->cost = next_index->position;
@@ -199,17 +202,9 @@ void    ft_get_cost(t_stack_info *info_a, t_stack_info *info_b)
             current_b->cost = ((current_b->position) + next_index->cost);
         else
             current_b->cost = ((info_b->len - current_b->position)+ next_index->cost);
+        ft_printf("Node at position %d has cost %d\n", current_b->position, current_b->cost);
         current_b = current_b->next;
     }
-    next_index = ft_find_next_index(info_a, current_b);
-    if(next_index->position < (info_a->len / 2))
-        next_index->cost = next_index->position;
-    else
-        next_index->cost = info_a->len - next_index->position;
-    if(current_b->position < (info_b->len / 2))
-        current_b->cost = ((current_b->position) + next_index->cost);
-    else
-        current_b->cost = ((info_b->len - current_b->position)+ next_index->cost);
 }
 p_list *ft_find_next_index(t_stack_info *info_a, p_list *current)
 {

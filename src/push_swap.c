@@ -53,7 +53,7 @@ void    ft_update_stack(t_stack_info *info_a, t_stack_info *info_b)
     info_a->len = ft_lstsize_db(info_a);
     ft_update_min_max(info_b);
     ft_update_pos(&(info_b->stack));
-    info_a->len = ft_lstsize_db(info_a);
+    info_b->len = ft_lstsize_db(info_b);
 }
 
 int main(int argc, char **argv) 
@@ -91,22 +91,50 @@ int main(int argc, char **argv)
     ft_update_stack(&stack_a,  &stack_b);
     while (stack_a.len > 3)
     {
-        ft_push_a(&stack_a, &stack_b);
+        ft_push_b(&stack_a, &stack_b);
         ft_update_stack(&stack_a, &stack_b);
     }
     ft_tiny_sort(&stack_a);
     ft_printf("Depois do tiny sort\n");
     ft_update_stack(&stack_a, &stack_b);
-    ft_printf("stack a af\n");
+    ft_printf("stack a\n");
     ft_print_list(&stack_a);
     ft_printf("stack b\n");
     ft_print_list(&stack_b);
+    ft_get_cost(&stack_a, &stack_b);
+    ft_update_stack(&stack_a, &stack_b);
+    ft_printf("stack a\n");
+    ft_print_list(&stack_a);
+    ft_printf("stack b\n");
+    ft_print_list(&stack_b);
+    ft_rotate_a(&stack_a);
+    ft_push_a(&stack_a, &stack_b);
+    ft_update_stack(&stack_a, &stack_b);
     ft_get_cost(&stack_a, &stack_b);
     ft_printf("stack a\n");
     ft_print_list(&stack_a);
     ft_printf("stack b\n");
     ft_print_list(&stack_b);
-    
+    ft_push_a(&stack_a, &stack_b);
+    ft_update_stack(&stack_a, &stack_b);
+    ft_get_cost(&stack_a, &stack_b);
+    ft_printf("stack a\n");
+    ft_print_list(&stack_a);
+    ft_printf("stack b\n");
+    ft_print_list(&stack_b);
+    ft_rotate_a(&stack_a);
+    ft_printf("depois do rotate\n");
+    ft_printf("stack a\n");
+    ft_print_list(&stack_a);
+    ft_printf("stack b\n");
+    ft_print_list(&stack_b);
+
+    ft_push_a(&stack_a, &stack_b);
+    ft_printf("stack a\n");
+    ft_print_list(&stack_a);
+    ft_printf("stack b\n");
+    ft_print_list(&stack_b);
+
     if (argc == 2)
         free(args);
 

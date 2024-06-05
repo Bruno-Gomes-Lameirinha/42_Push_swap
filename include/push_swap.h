@@ -39,8 +39,8 @@ typedef struct stack_info
 p_list  *ft_lstadd_back_dbl(p_list **stack, p_list *new);
 p_list  *ft_lstnew_dbl(int data);
 void 	ft_swap(t_stack_info *info); 
-p_list  *ft_swap_ss(t_stack_info *info_a, t_stack_info *info_b);
-p_list  *ft_rotate_a(t_stack_info *info);
+void 	ft_rotate_a(t_stack_info *info);
+p_list  *ft_rotate_b(t_stack_info *info);
 p_list  *ft_reverse_rotate_a(t_stack_info *info);
 p_list  *ft_push_b(t_stack_info *info_a, t_stack_info *info_b);
 void    ft_lstadd_front_db(p_list **lst, p_list *new);
