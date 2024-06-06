@@ -22,6 +22,8 @@ typedef struct push_list
 	int					*content;
 	int					index;
 	int					cost;
+	int					target_index;
+	int					target_pos;
 	int					position;
 	struct push_list	*prev;
 	struct push_list	*next;
@@ -29,10 +31,11 @@ typedef struct push_list
 
 typedef struct stack_info
 {
-    p_list  *stack;
+	p_list  *stack;
 	int     len;
-    int     min;
-    int     max;
+	int		total_len;
+	int     min;
+	int     max;
 	char	letter;
 }   t_stack_info;
 
@@ -58,5 +61,8 @@ void    ft_push_a(t_stack_info *info_a, t_stack_info *info_b);
 void    ft_set_stack(t_stack_info *info_a, t_stack_info *info_b);
 void    ft_get_cost(t_stack_info *info_a, t_stack_info *info_b);
 p_list *ft_find_next_index(t_stack_info *info_a, p_list *current);
+p_list *ft_find_min_cost_node(t_stack_info *info_b);
+void	ft_make_moves_sb(t_stack_info *info_a, t_stack_info *info_b);
+void	ft_make_moves_sa(t_stack_info *info_a, t_stack_info *info_b, p_list *node);
 
 #endif

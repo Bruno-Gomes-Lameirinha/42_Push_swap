@@ -92,7 +92,7 @@ void    ft_push_b(t_stack_info *info_a, t_stack_info *info_b)
     } else {
         info_a->stack = node_to_push->next;
         node_to_push->next->prev = node_to_push->prev;
-        node_to_push->prev->next = node_to_push->next;
+        node_to_push->prev->next = info_a->stack;
     }
 
     node_to_push->next = NULL;
@@ -114,7 +114,7 @@ void    ft_push_a(t_stack_info *info_a, t_stack_info *info_b)
     } else {
         info_b->stack = node_to_push->next;
         node_to_push->next->prev = node_to_push->prev;
-        node_to_push->prev->next = node_to_push->next;
+        node_to_push->prev->next = info_b->stack;
     }
 
     node_to_push->next = NULL;
