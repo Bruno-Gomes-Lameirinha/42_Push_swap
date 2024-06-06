@@ -98,7 +98,11 @@ int main(int argc, char **argv)
 		ft_get_cost(&stack_a, &stack_b);
 		ft_make_moves_sb(&stack_a, &stack_b);
 	}
-
+		if (stack_a.stack->index != 1)
+		{
+			ft_update_stack(&stack_a, &stack_b);
+			ft_finish_stack(&stack_a);
+		}
 		ft_printf("stack a\n");
 		ft_print_list(&stack_a);
 		ft_printf("stack b\n");

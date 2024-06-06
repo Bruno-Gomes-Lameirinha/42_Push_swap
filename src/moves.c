@@ -122,3 +122,37 @@ void    ft_push_a(t_stack_info *info_a, t_stack_info *info_b)
     ft_lstadd_front_db(info_a, node_to_push);
     ft_printf("pa\n");
 }
+
+void   ft_rotate_both(t_stack_info *stack_a, t_stack_info *stack_b) 
+{
+    p_list *first_a;
+    p_list *first_b;
+
+    if (stack_a == NULL || stack_a->stack == NULL || stack_a->stack->next == NULL)
+        return;
+    if (stack_b == NULL || stack_b->stack == NULL || stack_b->stack->next == NULL)
+        return;
+    first_a = stack_a->stack;
+    stack_a->stack = first_a->next;
+    first_b = stack_b->stack;
+    stack_b->stack = first_b->next;
+
+    ft_printf("rr\n");
+}
+
+void   ft_reverse_rotate_both(t_stack_info *stack_a, t_stack_info *stack_b) 
+{
+    p_list *first_a;
+    p_list *first_b;
+
+    if (stack_a == NULL || stack_a->stack == NULL || stack_a->stack->next == NULL)
+        return;
+    if (stack_b == NULL || stack_b->stack == NULL || stack_b->stack->next == NULL)
+        return;
+    first_a = stack_a->stack;
+    stack_a->stack = first_a->prev;
+    first_b = stack_b->stack;
+    stack_b->stack = first_b->prev;
+
+    ft_printf("rrr\n");
+}

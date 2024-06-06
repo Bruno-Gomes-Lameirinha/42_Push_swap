@@ -250,6 +250,7 @@ p_list *ft_find_min_cost_node(t_stack_info *info_b)
 	}
 	return searcher;
 }
+
 void	ft_make_moves_sb(t_stack_info *info_a, t_stack_info *info_b)
 {
 	p_list *node_min_cost;
@@ -301,3 +302,62 @@ void	ft_make_moves_sa(t_stack_info *info_a, p_list *node)
 		}
 	}
 }
+
+p_list *ft_find_index_one(t_stack_info *info_a)
+{
+	p_list *current_a;
+	p_list *searcher;
+	int	first_node_processed; 
+
+	first_node_processed = 0; 
+	current_a = info_a->stack;
+	searcher = NULL;
+	while (current_a != info_a->stack || !first_node_processed)
+	{
+		first_node_processed = 1;
+		if (current_a->index == 1)
+			searcher = current_a;
+		current_a = current_a->next;
+	}
+	return(searcher);
+}
+void	ft_finish_stack(t_stack_info *stack_a)
+{
+	p_list *node_index_one;
+
+	node_index_one = ft_find_index_one(stack_a);
+	ft_last_moves_sa(stack_a, node_index_one);
+
+}
+
+void	ft_last_moves_sa(t_stack_info *info_a, p_list *node)
+{
+	int moves;
+
+	if(node->position <= info_a->len/2)
+	{
+		moves = node->position;
+		while(moves > 0)
+		{
+			ft_rotate_a(info_a);
+			moves--;
+		}
+	}
+	else
+	{
+		moves = ((info_a->len - node->position));
+		while(moves > 0)
+		{
+			ft_reverse_rotate_a(info_a);
+			moves--;
+		}
+	}
+}
+
+
+
+//se ambos foram da metade da stack para cima ou ambos forem da metade da stack para baixo
+// teria que fazer um loop ao qual ambos os heads fossem testadas se o nó movimentado já não é a head
+// da lista
+// teria que salvar a qtde de mov no no e depois fazer movimentos juntos descontando esta qtde de movs
+//depois fizalizar o saldo de movs restantes individualmente.

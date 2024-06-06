@@ -64,5 +64,10 @@ p_list *ft_find_next_index(t_stack_info *info_a, p_list *current);
 p_list *ft_find_min_cost_node(t_stack_info *info_b);
 void	ft_make_moves_sb(t_stack_info *info_a, t_stack_info *info_b);
 void	ft_make_moves_sa(t_stack_info *info_a, p_list *node);
+p_list *ft_find_index_one(t_stack_info *info_a);
+void	ft_finish_stack(t_stack_info *stack_a);
+void	ft_last_moves_sa(t_stack_info *info_a, p_list *node);
+void   ft_rotate_both(t_stack_info *stack_a, t_stack_info *stack_b);
+void   ft_reverse_rotate_both(t_stack_info *stack_a, t_stack_info *stack_b);
 
 #endif
