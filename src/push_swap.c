@@ -96,7 +96,7 @@ int main(int argc, char **argv)
 	{
 		ft_update_stack(&stack_a, &stack_b);
 		ft_get_cost(&stack_a, &stack_b);
-		ft_make_moves_sb(&stack_a, &stack_b);
+		ft_make_moves_test(&stack_a, &stack_b);
 	}
 		if (stack_a.stack->index != 1)
 		{

@@ -69,5 +69,6 @@ void	ft_finish_stack(t_stack_info *stack_a);
 void	ft_last_moves_sa(t_stack_info *info_a, p_list *node);
 void   ft_rotate_both(t_stack_info *stack_a, t_stack_info *stack_b);
 void   ft_reverse_rotate_both(t_stack_info *stack_a, t_stack_info *stack_b);
+void 	ft_make_moves_test(t_stack_info *info_a, t_stack_info *info_b);
 
 #endif
