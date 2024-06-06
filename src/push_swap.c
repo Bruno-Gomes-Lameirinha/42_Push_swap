@@ -88,56 +88,20 @@ int main(int argc, char **argv)
 			if(stack_a.max == *stack_a.stack->content)
 				ft_rotate_a(&stack_a);
 			ft_push_b(&stack_a, &stack_b);
-			ft_printf("stack a\n");
-			ft_print_list(&stack_a);
-			ft_printf("stack b\n");
-			ft_print_list(&stack_b);
 			ft_update_stack(&stack_a, &stack_b);
 		}
 		ft_tiny_sort(&stack_a);
-		ft_update_stack(&stack_a, &stack_b);
-		ft_get_cost(&stack_a, &stack_b);
-		ft_printf("stack a\n");
-		ft_print_list(&stack_a);
-		ft_printf("stack b\n");
-		ft_print_list(&stack_b);
 	}
-	
-	ft_make_moves_sb(&stack_a, &stack_b);
-		ft_printf("depois do make moves\n");
-		ft_update_stack(&stack_a, &stack_b);
-		ft_get_cost(&stack_a, &stack_b);
-		ft_printf("stack a\n");
-		ft_print_list(&stack_a);
-		ft_printf("stack b\n");
-		ft_print_list(&stack_b);
-
-		ft_make_moves_sb(&stack_a, &stack_b);
-		ft_printf("depois do make moves\n");
-		ft_update_stack(&stack_a, &stack_b);
-		ft_get_cost(&stack_a, &stack_b);
-		ft_printf("stack a\n");
-		ft_print_list(&stack_a);
-		ft_printf("stack b\n");
-		ft_print_list(&stack_b);
-
-		ft_make_moves_sb(&stack_a, &stack_b);
-		ft_printf("depois do make moves\n");
-		ft_update_stack(&stack_a, &stack_b);
-		ft_get_cost(&stack_a, &stack_b);
-		ft_printf("stack a\n");
-		ft_print_list(&stack_a);
-		ft_printf("stack b\n");
-		ft_print_list(&stack_b);
-	/*
 	while (stack_b.stack != NULL)
 	{
-		
-		//get min cost
-		//make moves and send to stack a
-		//refresh the stacks and make it again
+		ft_update_stack(&stack_a, &stack_b);
+		ft_get_cost(&stack_a, &stack_b);
+		ft_make_moves_sb(&stack_a, &stack_b);
 	}
-	*/
+		ft_printf("stack a\n");
+		ft_print_list(&stack_a);
+		ft_printf("stack b\n");
+		ft_print_list(&stack_b);
 	
 	
 	if (argc == 2)

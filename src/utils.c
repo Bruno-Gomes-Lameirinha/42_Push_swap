@@ -250,7 +250,6 @@ p_list *ft_find_min_cost_node(t_stack_info *info_b)
 			searcher = current;
 		current = current->next;
 	}
-	ft_printf("o custo menor é o %d\n", *current->content);
 	return (current);
 }
 void	ft_make_moves_sb(t_stack_info *info_a, t_stack_info *info_b)
@@ -259,11 +258,10 @@ void	ft_make_moves_sb(t_stack_info *info_a, t_stack_info *info_b)
 	int moves;
 
 	node_min_cost = (ft_find_min_cost_node(info_b));
-	ft_make_moves_sa(info_a, info_b, node_min_cost);
+	ft_make_moves_sa(info_a, node_min_cost);
 	if (node_min_cost->position <= (info_b->len / 2))
 	{
 		moves = node_min_cost->position;
-		ft_printf("moves é o %d\n na posição %d" , moves, node_min_cost->position);
 		while(moves > 0)
 		{
 			ft_rotate_b(info_b);
@@ -282,7 +280,7 @@ void	ft_make_moves_sb(t_stack_info *info_a, t_stack_info *info_b)
 		ft_push_a(info_a, info_b);
 	}
 }
-void	ft_make_moves_sa(t_stack_info *info_a, t_stack_info *info_b, p_list *node)
+void	ft_make_moves_sa(t_stack_info *info_a, p_list *node)
 {
 	int moves;
 
@@ -297,7 +295,7 @@ void	ft_make_moves_sa(t_stack_info *info_a, t_stack_info *info_b, p_list *node)
 	}
 	else
 	{
-		moves = ((info_b->len - node->target_pos)-1);
+		moves = ((info_a->len - node->target_pos));
 		while(moves > 0)
 		{
 			ft_reverse_rotate_a(info_a);

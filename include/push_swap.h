@@ -63,6 +63,6 @@ void    ft_get_cost(t_stack_info *info_a, t_stack_info *info_b);
 p_list *ft_find_next_index(t_stack_info *info_a, p_list *current);
 p_list *ft_find_min_cost_node(t_stack_info *info_b);
 void	ft_make_moves_sb(t_stack_info *info_a, t_stack_info *info_b);
-void	ft_make_moves_sa(t_stack_info *info_a, t_stack_info *info_b, p_list *node);
+void	ft_make_moves_sa(t_stack_info *info_a, p_list *node);
 
 #endif
