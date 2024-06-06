@@ -98,12 +98,12 @@ int main(int argc, char **argv)
 		ft_get_cost(&stack_a, &stack_b);
 		ft_make_moves_sb(&stack_a, &stack_b);
 	}
+
 		ft_printf("stack a\n");
 		ft_print_list(&stack_a);
 		ft_printf("stack b\n");
 		ft_print_list(&stack_b);
-	
-	
+
 	if (argc == 2)
 		free(args);
 

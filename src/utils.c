@@ -244,13 +244,11 @@ p_list *ft_find_min_cost_node(t_stack_info *info_b)
 	while (current != info_b->stack || !first_node_processed)
 	{
 		first_node_processed = 1;
-		if (searcher == NULL)
-			searcher = current;
-		if (searcher->cost > current->cost)
+		if (searcher == NULL || searcher->cost > current->cost)
 			searcher = current;
 		current = current->next;
 	}
-	return (current);
+	return searcher;
 }
 void	ft_make_moves_sb(t_stack_info *info_a, t_stack_info *info_b)
 {
