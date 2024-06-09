@@ -307,7 +307,7 @@ p_list *ft_find_index_one(t_stack_info *info_a)
 {
 	p_list *current_a;
 	p_list *searcher;
-	int	first_node_processed; 
+	int	first_node_processed;
 
 	first_node_processed = 0; 
 	current_a = info_a->stack;
@@ -319,25 +319,25 @@ p_list *ft_find_index_one(t_stack_info *info_a)
 			searcher = current_a;
 		current_a = current_a->next;
 	}
-	return(searcher);
+	return (searcher);
 }
+
 void	ft_finish_stack(t_stack_info *stack_a)
 {
-	p_list *node_index_one;
+	p_list	*node_index_one;
 
 	node_index_one = ft_find_index_one(stack_a);
 	ft_last_moves_sa(stack_a, node_index_one);
-
 }
 
 void	ft_last_moves_sa(t_stack_info *info_a, p_list *node)
 {
-	int moves;
+	int	moves;
 
-	if(node->position <= info_a->len/2)
+	if (node->position <= info_a->len / 2)
 	{
 		moves = node->position;
-		while(moves > 0)
+		while (moves > 0)
 		{
 			ft_rotate_a(info_a);
 			moves--;
@@ -346,7 +346,7 @@ void	ft_last_moves_sa(t_stack_info *info_a, p_list *node)
 	else
 	{
 		moves = ((info_a->len - node->position));
-		while(moves > 0)
+		while (moves > 0)
 		{
 			ft_reverse_rotate_a(info_a);
 			moves--;
@@ -354,65 +354,55 @@ void	ft_last_moves_sa(t_stack_info *info_a, p_list *node)
 	}
 }
 
-void ft_make_moves_test(t_stack_info *info_a, t_stack_info *info_b)
+void	ft_make_moves_test(t_stack_info *info_a, t_stack_info *info_b)
 {
-    p_list *node_min_cost;
-    int moves_a;
-    int moves_b;
+	p_list	*node_min_cost;
+	int		moves_a;
+	int		moves_b;
 
-    node_min_cost = ft_find_min_cost_node(info_b);
-    if (node_min_cost->position <= (info_b->len / 2))
-        moves_b = node_min_cost->position;
-    else
-        moves_b = info_b->len - node_min_cost->position;
-    if (node_min_cost->target_pos <= info_a->len / 2)
-        moves_a = node_min_cost->target_pos;
-    else
-        moves_a = info_a->len - node_min_cost->target_pos;
-    // Movimentos combinados
-    while (moves_a > 0 && moves_b > 0)
-    {
-        if (node_min_cost->position <= (info_b->len / 2) && node_min_cost->target_pos <= info_a->len / 2)
-        {
-            ft_rotate_both(info_a, info_b);
-            moves_a--;
-            moves_b--;
-        }
-        else if (node_min_cost->position > (info_b->len / 2) && node_min_cost->target_pos > (info_a->len / 2))
-        {
-            ft_reverse_rotate_both(info_a, info_b);
-            moves_a--;
-            moves_b--;
-        }
-        else
-        {
-            break;
-        }
-    }
-    // Movimentos restantes individuais
-    while (moves_a > 0)
-    {
-        if (node_min_cost->target_pos <= info_a->len / 2)
-        {
-            ft_rotate_a(info_a);
-        }
-        else
-        {
-            ft_reverse_rotate_a(info_a);
-        }
-        moves_a--;
-    }
-    while (moves_b > 0)
-    {
-        if (node_min_cost->position <= (info_b->len / 2))
-        {
-            ft_rotate_b(info_b);
-        }
-        else
-        {
-            ft_reverse_rotate_b(info_b);
-        }
-        moves_b--;
-    }
-    ft_push_a(info_a, info_b);
+	node_min_cost = ft_find_min_cost_node(info_b);
+	if (node_min_cost->position <= (info_b->len / 2))
+		moves_b = node_min_cost->position;
+	else
+		moves_b = info_b->len - node_min_cost->position;
+	if (node_min_cost->target_pos <= info_a->len / 2)
+		moves_a = node_min_cost->target_pos;
+	else
+		moves_a = info_a->len - node_min_cost->target_pos;
+	while (moves_a > 0 && moves_b > 0)
+	{
+		if (node_min_cost->position <= (info_b->len / 2) && \
+		node_min_cost->target_pos <= info_a->len / 2)
+		{
+			ft_rotate_both(info_a, info_b);
+			moves_a--;
+			moves_b--;
+		}
+		else if (node_min_cost->position > (info_b->len / 2) && \
+		node_min_cost->target_pos > (info_a->len / 2))
+		{
+			ft_reverse_rotate_both(info_a, info_b);
+			moves_a--;
+			moves_b--;
+		}
+		else
+			break ;
+	}
+	while (moves_a > 0)
+	{
+		if (node_min_cost->target_pos <= info_a->len / 2)
+			ft_rotate_a(info_a);
+		else
+			ft_reverse_rotate_a(info_a);
+		moves_a--;
+	}
+	while (moves_b > 0)
+	{
+		if (node_min_cost->position <= (info_b->len / 2))
+			ft_rotate_b(info_b);
+		else
+			ft_reverse_rotate_b(info_b);
+		moves_b--;
+	}
+	ft_push_a(info_a, info_b);
 }
