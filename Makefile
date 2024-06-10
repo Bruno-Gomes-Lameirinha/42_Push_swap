@@ -6,7 +6,7 @@
 #    By: bgomes-l <bgomes-l@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 19:01:04 by bgomes-l          #+#    #+#              #
-#    Updated: 2024/05/07 19:59:54 by bgomes-l         ###   ########.fr        #
+#    Updated: 2024/06/10 17:47:01 by bgomes-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ CFLAGS		:= -Wall -Wextra -Werror -g
 OBJECTS_PATH = ./obj
 HEADERS     := -I $(LIBFT_PATH)
 
-SRC_PUSH_SWAP = $(SRC_PATH)/push_swap.c $(SRC_PATH)/utils.c $(SRC_PATH)/moves.c
+SRC_PUSH_SWAP = $(SRC_PATH)/push_swap.c $(SRC_PATH)/utils.c $(SRC_PATH)/moves.c \
+				$(SRC_PATH)/moves_II.c
 
 OBJS := $(addprefix $(OBJECTS_PATH)/, $(notdir $(SRC_PUSH_SWAP:.c=.o)))
 

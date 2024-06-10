@@ -6,16 +6,16 @@
 /*   By: bgomes-l <bgomes-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 11:34:16 by bgomes-l          #+#    #+#             */
-/*   Updated: 2024/05/07 20:19:25 by bgomes-l         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:17:47 by bgomes-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int ft_is_sorted(p_list *stack) 
+int	ft_is_sorted(p_list *stack) 
 {
-	p_list *current;
-	p_list *start;
+	p_list	*current;
+	p_list	*start;
 
 	if (stack == NULL || stack->next == stack) {
 		return 1;
@@ -31,22 +31,22 @@ int ft_is_sorted(p_list *stack)
 	return 1;
 }
 
-void    ft_tiny_sort(t_stack_info *info)
+void	ft_tiny_sort(t_stack_info *info)
 {
 	if (ft_is_sorted(info->stack))
 		return;
-	if(info->max == *info->stack->content)
+	if (info->max == *info->stack->content)
 		ft_rotate_a(info);
-	if(*info->stack->content < *info->stack->next->content && info->max == *info->stack->next->content)
+	if (*info->stack->content < *info->stack->next->content && info->max == *info->stack->next->content)
 		{
 			ft_swap(info);
 			ft_rotate_a(info);
 		}
-	if(*info->stack->content > *info->stack->next->content)
+	if (*info->stack->content > *info->stack->next->content)
 		ft_swap(info);
 }
 
-void    ft_update_stack(t_stack_info *info_a, t_stack_info *info_b)
+void	ft_update_stack(t_stack_info *info_a, t_stack_info *info_b)
 {
 	ft_update_min_max(info_a);
 	ft_update_pos(&(info_a->stack));
@@ -56,7 +56,7 @@ void    ft_update_stack(t_stack_info *info_a, t_stack_info *info_b)
 	info_b->len = ft_lstsize_db(info_b);
 }
 
-int main(int argc, char **argv) 
+int	main(int argc, char **argv) 
 {
 	t_stack_info stack_a;
 	t_stack_info stack_b;
