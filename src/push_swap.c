@@ -6,7 +6,7 @@
 /*   By: bgomes-l <bgomes-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 11:34:16 by bgomes-l          #+#    #+#             */
-/*   Updated: 2024/06/10 17:17:47 by bgomes-l         ###   ########.fr       */
+/*   Updated: 2024/06/10 20:17:39 by bgomes-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,23 @@ void	ft_update_stack(t_stack_info *info_a, t_stack_info *info_b)
 	info_b->len = ft_lstsize_db(info_b);
 }
 
-int	main(int argc, char **argv) 
+void	ft_make_moves(t_stack_info *info_a, t_stack_info *info_b)
+{
+	p_list *node_min_cost;
+	int moves_a;
+	int moves_b;
+	
+	node_min_cost = ft_find_min_cost_node(info_b);
+	moves_a = ft_calculate_moves_a(info_a, node_min_cost->target_pos);
+	moves_b = ft_calculate_moves_b(info_b, node_min_cost->position);
+
+	ft_execute_combined_moves(info_a, info_b, &moves_a, &moves_b);
+	ft_finalize_moves_a(info_a, node_min_cost, moves_a);
+	ft_finalize_moves_b(info_b, node_min_cost, moves_b);
+	ft_push_a(info_a, info_b);
+}
+
+int	main(int argc, char **argv)
 {
 	t_stack_info stack_a;
 	t_stack_info stack_b;
@@ -96,17 +112,17 @@ int	main(int argc, char **argv)
 	{
 		ft_update_stack(&stack_a, &stack_b);
 		ft_get_cost(&stack_a, &stack_b);
-		ft_make_moves_test(&stack_a, &stack_b);
+		ft_make_moves(&stack_a, &stack_b);
 	}
 		if (stack_a.stack->index != 1)
 		{
 			ft_update_stack(&stack_a, &stack_b);
 			ft_finish_stack(&stack_a);
 		}
-		ft_printf("stack a\n");
-		ft_print_list(&stack_a);
-		ft_printf("stack b\n");
-		ft_print_list(&stack_b);
+		//ft_printf("stack a\n");
+		//ft_print_list(&stack_a);
+		//ft_printf("stack b\n");
+		//ft_print_list(&stack_b);
 
 	if (argc == 2)
 		free(args);
