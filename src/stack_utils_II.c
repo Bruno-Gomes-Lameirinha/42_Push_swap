@@ -35,7 +35,7 @@ void	ft_init_stack_a(t_stack_info *info_a, int argc, char **argv)
 		args = &argv[1];
 	while (args[i])
 	{
-		ft_check_push_args(args, info_a);
+		ft_check_push_args(args, info_a, argc);
 		new = ft_lstnew_dbl(ft_atoi(args[i]));
 		if (new == NULL && argc == 2)
 		{
@@ -54,7 +54,7 @@ void	ft_free_memory_a(t_stack_info *stack_a)
 	t_ls_db	*current;
 	t_ls_db	*current_x;
 
-	if (stack_a->stack == NULL)
+	if (stack_a->stack == NULL || stack_a == NULL)
 		return ;
 	current = stack_a->stack->next;
 	current_x = stack_a->stack->next->next;

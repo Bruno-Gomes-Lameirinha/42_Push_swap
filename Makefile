@@ -20,8 +20,7 @@ HEADERS     := -I $(LIBFT_PATH)
 
 SRC_PUSH_SWAP = $(SRC_PATH)/push_swap.c $(SRC_PATH)/sort.c $(SRC_PATH)/moves.c \
 				$(SRC_PATH)/moves_II.c $(SRC_PATH)/list_utils.c $(SRC_PATH)/stack_utils.c \
-				$(SRC_PATH)/print.c $(SRC_PATH)/sort_II.c $(SRC_PATH)/stack_utils_II.c \
-				$(SRC_PATH)/check_args.c
+				$(SRC_PATH)/sort_II.c $(SRC_PATH)/stack_utils_II.c $(SRC_PATH)/check_args.c
 
 OBJS := $(addprefix $(OBJECTS_PATH)/, $(notdir $(SRC_PUSH_SWAP:.c=.o)))
 

@@ -82,7 +82,7 @@ void	ft_free_memory_a(t_stack_info *stack_a);
 void	ft_free_args(char **args, int i);
 int		ft_num_is_repeated(int num, char **argv, int i);
 void	ft_error(char *msg);
-void	ft_check_push_args(char **args, t_stack_info *info_a);
+void	ft_check_push_args(char **args, t_stack_info *info_a, int argc);
 int		ft_is_num(char *num);
 int		ft_count_args(char **args);
 

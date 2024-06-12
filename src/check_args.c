@@ -40,7 +40,7 @@ int	ft_num_is_repeated(int num, char **argv, int i)
 	return (0);
 }
 
-void	ft_check_push_args(char **args, t_stack_info *info_a)
+void	ft_check_push_args(char **args, t_stack_info *info_a, int argc)
 {
 	int		j;
 	long	tmp;
@@ -51,13 +51,15 @@ void	ft_check_push_args(char **args, t_stack_info *info_a)
 		tmp = ft_atoi(args[j]);
 		if (!ft_is_num(args[j]) || ft_num_is_repeated(tmp, args, j))
 		{
-			ft_free_args(args, ft_count_args(args));
+			if (argc == 2)
+				ft_free_args(args, ft_count_args(args));
 			ft_free_memory_a(info_a);
 			ft_error("Error");
 		}
 		if (tmp < -2147483648 || tmp > 2147483647)
 		{
-			ft_free_args(args, ft_count_args(args));
+			if (argc == 2)
+				ft_free_args(args, ft_count_args(args));
 			ft_free_memory_a(info_a);
 			ft_error("Error");
 		}

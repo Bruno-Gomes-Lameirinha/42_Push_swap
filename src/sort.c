@@ -29,7 +29,7 @@ void	ft_get_cost(t_stack_info *info_a, t_stack_info *info_b)
 		if (next_index->position < (info_a->len / 2))
 			next_index->cost = next_index->position;
 		else
-			next_index->cost = info_a->len - next_index->position;
+			next_index->cost = (info_a->len - next_index->position) + 1;
 		if (current_b->position < (info_b->len / 2))
 			current_b->cost = ((current_b->position) + next_index->cost);
 		else

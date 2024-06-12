@@ -82,7 +82,7 @@ void	ft_send_nodes_to_stack_b(t_stack_info *stack_a, t_stack_info *stack_b)
 	else
 	{
 		ft_free_memory_a(stack_a);
-		exit(1);
+		exit(0);
 	}
 }
 
