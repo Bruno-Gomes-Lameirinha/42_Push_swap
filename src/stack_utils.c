@@ -68,22 +68,17 @@ void	ft_set_index(t_stack_info *info)
 	current = info->stack;
 	while (1)
 	{
-		if (*current->content == info->min)
-			current->index = 1;
-		else
+		count = 1;
+		searcher = info->stack;
+		while (1)
 		{
-			count = 1;
-			searcher = info->stack;
-			while (1)
-			{
-				if (*searcher->content < *current->content)
-					count++;
-				searcher = searcher->next;
-				if (searcher == info->stack)
-					break ;
-			}
-			current->index = count;
+			if (*searcher->content < *current->content)
+				count++;
+			searcher = searcher->next;
+			if (searcher == info->stack)
+				break ;
 		}
+		current->index = count;
 		current = current->next;
 		if (current == info->stack)
 			break ;

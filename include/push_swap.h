@@ -76,5 +76,6 @@ void	ft_finalize_moves_a(t_stack_info *info_a, \
 p_list *node_min_cost, int moves_a);
 void	ft_finalize_moves_b(t_stack_info *info_b, \
 p_list *node_min_cost, int moves_b);
+void	ft_init_stack_a(t_stack_info *info_a, int argc, char **argv);
 
 #endif

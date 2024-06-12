@@ -71,30 +71,38 @@ void	ft_make_moves(t_stack_info *info_a, t_stack_info *info_b)
 	ft_finalize_moves_b(info_b, node_min_cost, moves_b);
 	ft_push_a(info_a, info_b);
 }
+void	ft_init_stack_a(t_stack_info *info_a, int argc, char **argv)
+{
+	char **args;
+	int	i;
+	p_list *new;
+
+	i = 0;
+	if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else
+		args = &argv[1];
+	while (args[i]) 
+	{
+		new = ft_lstnew_dbl(ft_atoi(args[i]));
+		info_a->stack = ft_lstadd_back_dbl(&(info_a->stack), new);
+		i++;
+	}
+	if (argc == 2)
+		free(args);
+
+}
 
 int	main(int argc, char **argv)
 {
 	t_stack_info stack_a;
 	t_stack_info stack_b;
-	p_list *new;
-	int i;
-	char **args;
 
-	i = 0;
 	stack_a.stack = NULL;
 	stack_b.stack = NULL;
 	if (argc < 2)
 		exit(1);
-	else if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	else
-		args = &argv[1];
-	
-	while (args[i]) {
-		new = ft_lstnew_dbl(ft_atoi(args[i]));
-		stack_a.stack = ft_lstadd_back_dbl(&(stack_a.stack), new);
-		i++;
-	}
+	ft_init_stack_a(&stack_a, argc, argv);
 	if(!ft_is_sorted(stack_a.stack))
 	{
 		ft_set_stack(&stack_a, &stack_b);
@@ -119,13 +127,9 @@ int	main(int argc, char **argv)
 			ft_update_stack(&stack_a, &stack_b);
 			ft_finish_stack(&stack_a);
 		}
-		//ft_printf("stack a\n");
-		//ft_print_list(&stack_a);
-		//ft_printf("stack b\n");
-		//ft_print_list(&stack_b);
-
-	if (argc == 2)
-		free(args);
-
+		ft_printf("stack a\n");
+		ft_print_list(&stack_a);
+		ft_printf("stack b\n");
+		ft_print_list(&stack_b);
 	return 0;
 }
