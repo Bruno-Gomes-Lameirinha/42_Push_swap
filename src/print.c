@@ -26,3 +26,8 @@ void	ft_print_list(t_stack_info *info)
 	}
 	ft_printf("content %d  pos: %d  index: %d cost: %d target: %d\n", *current->content, current->position, current->index, current->cost, current->target_index);
 }
+
+	//ft_printf("stack a\n");
+	//ft_print_list(&stack_a);
+	//ft_printf("stack b\n");
+	//ft_print_list(&stack_b);
