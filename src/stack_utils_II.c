@@ -36,11 +36,17 @@ void	ft_init_stack_a(t_stack_info *info_a, int argc, char **argv)
 	while (args[i])
 	{
 		new = ft_lstnew_dbl(ft_atoi(args[i]));
+		if (new == NULL && argc == 2)
+		{
+			ft_free_args(args, i);
+			if (info_a->stack != NULL)
+				ft_free_memory_a(info_a);
+		}
 		info_a->stack = ft_lstadd_back_dbl(&(info_a->stack), new);
 		i++;
 	}
 	if (argc == 2)
-		free(args);
+		ft_free_args(args, i);
 }
 
 void	ft_free_memory_a(t_stack_info *stack_a)
@@ -59,4 +65,14 @@ void	ft_free_memory_a(t_stack_info *stack_a)
 	}
 	free(stack_a->stack->content);
 	free(stack_a->stack);
+}
+
+void	ft_free_args(char **args, int i)
+{
+	while (i > 0)
+	{
+		--i;
+		free(args[i]);
+	}
+	free(args);
 }

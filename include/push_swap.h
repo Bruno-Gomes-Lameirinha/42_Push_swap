@@ -79,5 +79,6 @@ t_ls_db *node_min_cost, int moves_b);
 void	ft_init_stack_a(t_stack_info *info_a, int argc, char **argv);
 void	ft_send_nodes_to_stack_b(t_stack_info *stack_a, t_stack_info *stack_b);
 void	ft_free_memory_a(t_stack_info *stack_a);
+void	ft_free_args(char **args, int i);
 
 #endif
