@@ -12,10 +12,10 @@
 
 #include "../include/push_swap.h"
 
-int	ft_is_sorted(p_list *stack)
+int	ft_is_sorted(t_ls_db *stack)
 {
-	p_list	*current;
-	p_list	*start;
+	t_ls_db	*current;
+	t_ls_db	*start;
 
 	if (stack == NULL || stack->next == stack)
 		return (1);
@@ -51,7 +51,7 @@ void	ft_tiny_sort(t_stack_info *info)
 
 void	ft_make_moves(t_stack_info *info_a, t_stack_info *info_b)
 {
-	p_list	*node_min_cost;
+	t_ls_db	*node_min_cost;
 	int		moves_a;
 	int		moves_b;
 
@@ -80,7 +80,10 @@ void	ft_send_nodes_to_stack_b(t_stack_info *stack_a, t_stack_info *stack_b)
 		ft_tiny_sort(stack_a);
 	}
 	else
+	{
+		ft_free_memory_a(stack_a);
 		exit(1);
+	}
 }
 
 int	main(int argc, char **argv)
@@ -105,5 +108,6 @@ int	main(int argc, char **argv)
 		ft_update_stack(&stack_a, &stack_b);
 		ft_finish_stack(&stack_a);
 	}
+	ft_free_memory_a(&stack_a);
 	return (0);
 }

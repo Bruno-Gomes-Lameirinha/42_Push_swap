@@ -12,9 +12,9 @@
 
 #include "../include/push_swap.h"
 
-void	ft_update_pos(p_list **stack)
+void	ft_update_pos(t_ls_db **stack)
 {
-	p_list	*current;
+	t_ls_db	*current;
 	int		i;
 
 	if (stack == NULL || *stack == NULL)
@@ -34,7 +34,7 @@ void	ft_update_min_max(t_stack_info *info)
 {
 	int		min;
 	int		max;
-	p_list	*current;
+	t_ls_db	*current;
 
 	if (info->stack == NULL)
 		return ;
@@ -60,8 +60,8 @@ void	ft_update_min_max(t_stack_info *info)
 void	ft_set_index(t_stack_info *info)
 {
 	int		count;
-	p_list	*current;
-	p_list	*searcher;
+	t_ls_db	*current;
+	t_ls_db	*searcher;
 
 	if (info->stack == NULL)
 		return ;
@@ -93,10 +93,10 @@ void	ft_set_stack(t_stack_info *info_a, t_stack_info *info_b)
 	info_a->total_len = ft_lstsize_db(info_a);
 }
 
-p_list	*ft_find_next_index(t_stack_info *info_a, p_list *current)
+t_ls_db	*ft_find_next_index(t_stack_info *info_a, t_ls_db *current)
 {
-	p_list	*current_a;
-	p_list	*searcher;
+	t_ls_db	*current_a;
+	t_ls_db	*searcher;
 	int		first_node_processed;
 
 	first_node_processed = 0;

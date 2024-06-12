@@ -14,8 +14,8 @@
 
 void	ft_get_cost(t_stack_info *info_a, t_stack_info *info_b)
 {
-	p_list	*current_b;
-	p_list	*next_index;
+	t_ls_db	*current_b;
+	t_ls_db	*next_index;
 	int		first_node_processed;
 
 	if (info_b->stack == NULL)
@@ -39,10 +39,10 @@ void	ft_get_cost(t_stack_info *info_a, t_stack_info *info_b)
 	}
 }
 
-p_list	*ft_find_min_cost_node(t_stack_info *info_b)
+t_ls_db	*ft_find_min_cost_node(t_stack_info *info_b)
 {
-	p_list	*current;
-	p_list	*searcher;
+	t_ls_db	*current;
+	t_ls_db	*searcher;
 	int		first_node_processed;
 
 	first_node_processed = 0;
@@ -58,10 +58,10 @@ p_list	*ft_find_min_cost_node(t_stack_info *info_b)
 	return (searcher);
 }
 
-p_list	*ft_find_index_one(t_stack_info *info_a)
+t_ls_db	*ft_find_index_one(t_stack_info *info_a)
 {
-	p_list	*current_a;
-	p_list	*searcher;
+	t_ls_db	*current_a;
+	t_ls_db	*searcher;
 	int		first_node_processed;
 
 	first_node_processed = 0;
@@ -79,13 +79,13 @@ p_list	*ft_find_index_one(t_stack_info *info_a)
 
 void	ft_finish_stack(t_stack_info *stack_a)
 {
-	p_list	*node_index_one;
+	t_ls_db	*node_index_one;
 
 	node_index_one = ft_find_index_one(stack_a);
 	ft_last_moves_sa(stack_a, node_index_one);
 }
 
-void	ft_last_moves_sa(t_stack_info *info_a, p_list *node)
+void	ft_last_moves_sa(t_stack_info *info_a, t_ls_db *node)
 {
 	int	moves;
 

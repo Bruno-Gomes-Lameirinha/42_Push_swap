@@ -12,9 +12,9 @@
 
 #include "../include/push_swap.h"
 
-p_list	*ft_lstadd_back_dbl(p_list **stack, p_list *new)
+t_ls_db	*ft_lstadd_back_dbl(t_ls_db **stack, t_ls_db *new)
 {
-	p_list	*last;
+	t_ls_db	*last;
 
 	if (stack == NULL || new == NULL)
 		return (NULL);
@@ -35,12 +35,12 @@ p_list	*ft_lstadd_back_dbl(p_list **stack, p_list *new)
 	return (*stack);
 }
 
-p_list	*ft_lstnew_dbl(int data)
+t_ls_db	*ft_lstnew_dbl(int data)
 {
-	p_list	*new_node;
+	t_ls_db	*new_node;
 	int		*ptr;
 
-	new_node = malloc(sizeof(p_list));
+	new_node = malloc(sizeof(t_ls_db));
 	if (new_node == NULL)
 		return (NULL);
 	ptr = malloc(sizeof(int));
@@ -56,9 +56,9 @@ p_list	*ft_lstnew_dbl(int data)
 	return (new_node);
 }
 
-void	ft_lstadd_front_db(t_stack_info *info, p_list *new)
+void	ft_lstadd_front_db(t_stack_info *info, t_ls_db *new)
 {
-	p_list	*last;
+	t_ls_db	*last;
 
 	if (new != NULL)
 	{
@@ -83,7 +83,7 @@ void	ft_lstadd_front_db(t_stack_info *info, p_list *new)
 int	ft_lstsize_db(t_stack_info *info)
 {
 	int		i;
-	p_list	*current;
+	t_ls_db	*current;
 
 	current = info->stack;
 	i = 0;

@@ -26,7 +26,7 @@ void	ft_init_stack_a(t_stack_info *info_a, int argc, char **argv)
 {
 	char	**args;
 	int		i;
-	p_list	*new;
+	t_ls_db	*new;
 
 	i = 0;
 	if (argc == 2)
@@ -41,4 +41,22 @@ void	ft_init_stack_a(t_stack_info *info_a, int argc, char **argv)
 	}
 	if (argc == 2)
 		free(args);
+}
+
+void	ft_free_memory_a(t_stack_info *stack_a)
+{
+	t_ls_db	*current;
+	t_ls_db	*current_x;
+
+	current = stack_a->stack->next;
+	current_x = stack_a->stack->next->next;
+	while (current != stack_a->stack)
+	{
+		free(current->content);
+		current = current->next;
+		free(current_x->prev);
+		current_x = current->next;
+	}
+	free(stack_a->stack->content);
+	free(stack_a->stack);
 }

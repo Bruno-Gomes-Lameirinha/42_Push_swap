@@ -14,7 +14,7 @@
 
 void	ft_print_list(t_stack_info *info)
 {
-	p_list	*current;
+	t_ls_db	*current;
 
 	if (info->stack == NULL)
 		return;

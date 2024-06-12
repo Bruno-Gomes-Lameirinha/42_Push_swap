@@ -31,7 +31,7 @@ int	ft_calculate_moves_a(t_stack_info *info, int target_pos)
 void	ft_execute_combined_moves(t_stack_info *info_a, t_stack_info *info_b, \
 int *moves_a, int *moves_b)
 {
-	p_list	*node_min_cost;
+	t_ls_db	*node_min_cost;
 
 	node_min_cost = ft_find_min_cost_node(info_b);
 	while (*moves_a > 0 && *moves_b > 0)
@@ -56,7 +56,7 @@ int *moves_a, int *moves_b)
 }
 
 void	ft_finalize_moves_a(t_stack_info *info_a, \
-p_list *node_min_cost, int moves_a)
+t_ls_db *node_min_cost, int moves_a)
 {
 	while (moves_a > 0)
 	{
@@ -69,7 +69,7 @@ p_list *node_min_cost, int moves_a)
 }
 
 void	ft_finalize_moves_b(t_stack_info *info_b, \
-p_list *node_min_cost, int moves_b)
+t_ls_db *node_min_cost, int moves_b)
 {
 	while (moves_b > 0)
 	{

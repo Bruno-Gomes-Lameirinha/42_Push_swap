@@ -14,8 +14,8 @@
 
 void	ft_swap(t_stack_info *info)
 {
-	p_list	*first;
-	p_list	*second;
+	t_ls_db	*first;
+	t_ls_db	*second;
 
 	if (info == NULL || info->stack == NULL || info->stack->next == NULL)
 		return ;
@@ -37,7 +37,7 @@ void	ft_swap(t_stack_info *info)
 
 void	ft_rotate_a(t_stack_info *info)
 {
-	p_list	*new_head;
+	t_ls_db	*new_head;
 
 	if (info == NULL || info->stack == NULL || info->stack->next == NULL)
 		return ;
@@ -46,9 +46,9 @@ void	ft_rotate_a(t_stack_info *info)
 	ft_printf("ra\n");
 }
 
-p_list	*ft_rotate_b(t_stack_info *info)
+t_ls_db	*ft_rotate_b(t_stack_info *info)
 {
-	p_list	*first;
+	t_ls_db	*first;
 
 	if (info == NULL || info->stack == NULL || info->stack->next == NULL)
 		return (NULL);
@@ -58,9 +58,9 @@ p_list	*ft_rotate_b(t_stack_info *info)
 	return (info->stack);
 }
 
-p_list	*ft_reverse_rotate_a(t_stack_info *info)
+t_ls_db	*ft_reverse_rotate_a(t_stack_info *info)
 {
-	p_list	*first;
+	t_ls_db	*first;
 
 	if (info == NULL || info->stack == NULL || info->stack->next == NULL)
 		return (NULL);
@@ -70,9 +70,9 @@ p_list	*ft_reverse_rotate_a(t_stack_info *info)
 	return (info->stack);
 }
 
-p_list	*ft_reverse_rotate_b(t_stack_info *info)
+t_ls_db	*ft_reverse_rotate_b(t_stack_info *info)
 {
-	p_list	*first;
+	t_ls_db	*first;
 
 	if (info == NULL || info->stack == NULL || info->stack->next == NULL)
 		return (NULL);

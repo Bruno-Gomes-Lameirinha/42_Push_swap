@@ -14,7 +14,7 @@
 
 void	ft_push_b(t_stack_info *info_a, t_stack_info *info_b)
 {
-	p_list	*node_to_push;
+	t_ls_db	*node_to_push;
 
 	if (info_a == NULL || info_a->stack == NULL)
 		return ;
@@ -35,7 +35,7 @@ void	ft_push_b(t_stack_info *info_a, t_stack_info *info_b)
 
 void	ft_push_a(t_stack_info *info_a, t_stack_info *info_b)
 {
-	p_list	*node_to_push;
+	t_ls_db	*node_to_push;
 
 	if (info_b == NULL || info_b->stack == NULL)
 		return ;
@@ -58,8 +58,8 @@ void	ft_push_a(t_stack_info *info_a, t_stack_info *info_b)
 
 void	ft_rotate_both(t_stack_info *stack_a, t_stack_info *stack_b)
 {
-	p_list	*first_a;
-	p_list	*first_b;
+	t_ls_db	*first_a;
+	t_ls_db	*first_b;
 
 	if (stack_a == NULL || stack_a->stack == NULL || \
 	stack_a->stack->next == NULL)
@@ -76,8 +76,8 @@ void	ft_rotate_both(t_stack_info *stack_a, t_stack_info *stack_b)
 
 void	ft_reverse_rotate_both(t_stack_info *stack_a, t_stack_info *stack_b)
 {
-	p_list	*first_a;
-	p_list	*first_b;
+	t_ls_db	*first_a;
+	t_ls_db	*first_b;
 
 	if (stack_a == NULL || stack_a->stack == NULL || \
 	stack_a->stack->next == NULL)
