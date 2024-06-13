@@ -17,7 +17,6 @@ int	ft_print_char(int fd, int c)
 	return (write(fd, &c, 1));
 }
 
-
 int	ft_print_str(int fd, char *str)
 {
 	int	count;
@@ -51,7 +50,7 @@ int	ft_print_pointer(int fd, unsigned long num)
 	return (count);
 }
 
-int	ft_print_digit(int fd, long n, int base, char *symbols)
+int	ft_print_d(int fd, long n, int base, char *symbols)
 {
 	int		count;
 	char	*symbols_f;
@@ -61,13 +60,13 @@ int	ft_print_digit(int fd, long n, int base, char *symbols)
 	if (n < 0)
 	{
 		write(fd, "-", 1);
-		return (ft_print_digit(fd, -n, base, symbols_f) + 1);
+		return (ft_print_d(fd, -n, base, symbols_f) + 1);
 	}
 	else if (n < base)
 		return (ft_print_char(fd, symbols[n]));
 	else
 	{
-		count = ft_print_digit(fd, n / base, base, symbols_f);
-		return (count + ft_print_digit(fd, n % base, base, symbols));
+		count = ft_print_d(fd, n / base, base, symbols_f);
+		return (count + ft_print_d(fd, n % base, base, symbols));
 	}
 }

@@ -33,6 +33,7 @@ typedef struct stack_info
 {
 	t_ls_db	*stack;
 	int		len;
+	int		args;
 	int		total_len;
 	int		min;
 	int		max;

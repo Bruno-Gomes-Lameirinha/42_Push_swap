@@ -20,7 +20,7 @@
 # include <stdarg.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 50
 # endif
 
 # define DEC_BASE "0123456789"
@@ -89,7 +89,7 @@ void	ft_strconcat(char **temp, char **x, char *remainder, char *buffer);
 int		ft_printf(int fd, const char *format, ...);
 int		ft_print_format(int fd, char specifier, va_list ap);
 int		ft_print_digit_upper(long n, int base);
-int		ft_print_digit(int fd, long n, int base, char *symbols);
+int		ft_print_d(int fd, long n, int base, char *symbols);
 int		ft_print_pointer(int fd, unsigned long num);
 int		ft_print_str(int fd, char *str);
 int		ft_print_char(int fd, int c);

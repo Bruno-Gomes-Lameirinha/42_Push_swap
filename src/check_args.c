@@ -46,6 +46,7 @@ void	ft_check_push_args(char **args, t_stack_info *info_a, int argc)
 	long	tmp;
 
 	j = 0;
+	info_a->args = ft_count_args(args);
 	while (args[j])
 	{
 		tmp = ft_atoi(args[j]);

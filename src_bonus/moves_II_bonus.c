@@ -88,3 +88,32 @@ t_stack_info *stack_b)
 	first_b = stack_b->stack;
 	stack_b->stack = first_b->prev;
 }
+
+void	ft_free_memory_bonus(t_stack_info *stack_b, char *line, \
+t_stack_info *stack_a)
+{
+	t_ls_db	*current;
+	t_ls_db	*next;
+
+	if (line != NULL)
+		free(line);
+	ft_free_memory_a(stack_a);
+	if (stack_b == NULL || stack_b->stack == NULL)
+		return ;
+	current = stack_b->stack;
+	if (current->next == current)
+	{
+		free(current->content);
+		free(current);
+		return ;
+	}
+	while (current->next != stack_b->stack)
+	{
+		next = current->next;
+		free(current->content);
+		free(current);
+		current = next;
+	}
+	free(current->content);
+	free(current);
+}

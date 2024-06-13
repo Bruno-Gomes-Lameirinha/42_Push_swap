@@ -52,21 +52,26 @@ void	ft_init_stack_a(t_stack_info *info_a, int argc, char **argv)
 void	ft_free_memory_a(t_stack_info *stack_a)
 {
 	t_ls_db	*current;
-	t_ls_db	*current_x;
+	t_ls_db	*next;
 
-	if (stack_a->stack == NULL || stack_a == NULL)
+	if (stack_a == NULL || stack_a->stack == NULL)
 		return ;
-	current = stack_a->stack->next;
-	current_x = stack_a->stack->next->next;
-	while (current != stack_a->stack)
+	current = stack_a->stack;
+	if (current->next == current)
 	{
 		free(current->content);
-		current = current->next;
-		free(current_x->prev);
-		current_x = current->next;
+		free(current);
+		return ;
 	}
-	free(stack_a->stack->content);
-	free(stack_a->stack);
+	while (current->next != stack_a->stack)
+	{
+		next = current->next;
+		free(current->content);
+		free(current);
+		current = next;
+	}
+	free(current->content);
+	free(current);
 }
 
 void	ft_free_args(char **args, int i)

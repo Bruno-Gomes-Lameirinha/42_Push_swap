@@ -35,6 +35,11 @@ t_stack_info *stack_b)
 		ft_reverse_rotate_b_bonus(stack_b);
 	else if (strcmp(instruction, "rrr\n") == 0)
 		ft_reverse_rotate_both_bonus(stack_a, stack_b);
+	else
+	{
+		ft_free_memory_bonus(stack_b, instruction, stack_a);
+		ft_error("Error");
+	}
 }
 
 int	ft_is_sorted_checker(t_ls_db *stack)
