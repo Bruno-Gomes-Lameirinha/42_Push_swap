@@ -30,9 +30,9 @@ void	ft_swap(t_stack_info *info)
 	first->prev = second;
 	info->stack = second;
 	if (info->letter == 'a')
-		ft_printf("sa\n");
+		ft_printf(1, "sa\n");
 	else
-		ft_printf("sb\n");
+		ft_printf(1, "sb\n");
 }
 
 void	ft_rotate_a(t_stack_info *info)
@@ -43,7 +43,7 @@ void	ft_rotate_a(t_stack_info *info)
 		return ;
 	new_head = info->stack->next;
 	info->stack = new_head;
-	ft_printf("ra\n");
+	ft_printf(1, "ra\n");
 }
 
 t_ls_db	*ft_rotate_b(t_stack_info *info)
@@ -54,7 +54,7 @@ t_ls_db	*ft_rotate_b(t_stack_info *info)
 		return (NULL);
 	first = info->stack;
 	info->stack = first->next;
-	ft_printf("rb\n");
+	ft_printf(1, "rb\n");
 	return (info->stack);
 }
 
@@ -66,7 +66,7 @@ t_ls_db	*ft_reverse_rotate_a(t_stack_info *info)
 		return (NULL);
 	first = info->stack;
 	info->stack = first->prev;
-	ft_printf("rra\n");
+	ft_printf(1, "rra\n");
 	return (info->stack);
 }
 
@@ -78,6 +78,6 @@ t_ls_db	*ft_reverse_rotate_b(t_stack_info *info)
 		return (NULL);
 	first = info->stack;
 	info->stack = first->prev;
-	ft_printf("rrb\n");
+	ft_printf(1, "rrb\n");
 	return (info->stack);
 }

@@ -77,9 +77,9 @@ int	main(int argc, char **argv)
 		free(line);
 	}
 	if (ft_is_sorted_checker(stack_a.stack) && stack_b.stack == NULL)
-		ft_printf("OK\n");
+		ft_printf(1, "OK\n");
 	else
-		ft_printf("KO\n");
+		ft_printf(1, "KO\n");
 	ft_free_memory_a(&stack_a);
 	return (0);
 }

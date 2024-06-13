@@ -30,7 +30,7 @@ void	ft_push_b(t_stack_info *info_a, t_stack_info *info_b)
 	node_to_push->next = NULL;
 	node_to_push->prev = NULL;
 	ft_lstadd_front_db(info_b, node_to_push);
-	ft_printf("pb\n");
+	ft_printf(1, "pb\n");
 }
 
 void	ft_push_a(t_stack_info *info_a, t_stack_info *info_b)
@@ -53,7 +53,7 @@ void	ft_push_a(t_stack_info *info_a, t_stack_info *info_b)
 	node_to_push->next = NULL;
 	node_to_push->prev = NULL;
 	ft_lstadd_front_db(info_a, node_to_push);
-	ft_printf("pa\n");
+	ft_printf(1, "pa\n");
 }
 
 void	ft_rotate_both(t_stack_info *stack_a, t_stack_info *stack_b)
@@ -71,7 +71,7 @@ void	ft_rotate_both(t_stack_info *stack_a, t_stack_info *stack_b)
 	stack_a->stack = first_a->next;
 	first_b = stack_b->stack;
 	stack_b->stack = first_b->next;
-	ft_printf("rr\n");
+	ft_printf(1, "rr\n");
 }
 
 void	ft_reverse_rotate_both(t_stack_info *stack_a, t_stack_info *stack_b)
@@ -89,5 +89,5 @@ void	ft_reverse_rotate_both(t_stack_info *stack_a, t_stack_info *stack_b)
 	stack_a->stack = first_a->prev;
 	first_b = stack_b->stack;
 	stack_b->stack = first_b->prev;
-	ft_printf("rrr\n");
+	ft_printf(1, "rrr\n");
 }

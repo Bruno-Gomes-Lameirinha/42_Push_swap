@@ -86,12 +86,12 @@ size_t	ft_findchr(const char *s, char c);
 char	*ft_line(char *temp, char *x, char *remainder, char *buffer);
 char	*read_check(int bytes_read, char *remainder, char *buffer, char *temp);
 void	ft_strconcat(char **temp, char **x, char *remainder, char *buffer);
-int		ft_printf(const char *str, ...);
-int		ft_print_format( char specifier, va_list ap);
+int		ft_printf(int fd, const char *format, ...);
+int		ft_print_format(int fd, char specifier, va_list ap);
 int		ft_print_digit_upper(long n, int base);
-int		ft_print_digit(long n, int base, char *symbols);
-int		ft_print_pointer(unsigned long num);
-int		ft_print_str(char *str);
-int		ft_print_char(int c);
+int		ft_print_digit(int fd, long n, int base, char *symbols);
+int		ft_print_pointer(int fd, unsigned long num);
+int		ft_print_str(int fd, char *str);
+int		ft_print_char(int fd, int c);
 
 #endif

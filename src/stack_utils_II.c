@@ -81,6 +81,6 @@ void	ft_free_args(char **args, int i)
 
 void	ft_error(char *msg)
 {
-	ft_printf ("%s\n", msg);
+	ft_printf (2, "%s\n", msg);
 	exit(0);
 }
