@@ -33,5 +33,6 @@ t_ls_db	*ft_reverse_rotate_a_bonus(t_stack_info *info);
 t_ls_db	*ft_reverse_rotate_b_bonus(t_stack_info *info);
 void	ft_free_memory_bonus(t_stack_info *stack_b, char *line, \
 t_stack_info *stack_a);
+void	ft_swap_both_bonus(t_stack_info *info_a, t_stack_info *info_b);
 
 #endif

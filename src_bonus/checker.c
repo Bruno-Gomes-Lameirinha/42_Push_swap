@@ -12,6 +12,12 @@
 
 #include "../include/checker.h"
 
+void	ft_swap_both_bonus(t_stack_info *info_a, t_stack_info *info_b)
+{
+	ft_swap_bonus(info_a);
+	ft_swap_bonus(info_b);
+}
+
 void	ft_exec_instruc(char *instruction, t_stack_info *stack_a, \
 t_stack_info *stack_b)
 {
@@ -35,6 +41,8 @@ t_stack_info *stack_b)
 		ft_reverse_rotate_b_bonus(stack_b);
 	else if (strcmp(instruction, "rrr\n") == 0)
 		ft_reverse_rotate_both_bonus(stack_a, stack_b);
+	else if (strcmp(instruction, "ss\n") == 0)
+		ft_swap_both_bonus(stack_a, stack_b);
 	else
 	{
 		ft_free_memory_bonus(stack_b, instruction, stack_a);
