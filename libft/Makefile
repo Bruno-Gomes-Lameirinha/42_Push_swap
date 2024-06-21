@@ -6,13 +6,13 @@
 #    By: bgomes-l <bgomes-l@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 13:30:54 by bgomes-l          #+#    #+#              #
-#    Updated: 2023/08/15 16:59:50 by bgomes-l         ###   ########.fr        #
+#    Updated: 2024/06/21 17:42:07 by bgomes-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-M_SRC = ft_atoi.c ft_isalpha.c ft_memchr.c ft_memset.c ft_strlcpy.c \
+M_SRC = ft_atoi.c ft_atol.c ft_isalpha.c ft_memchr.c ft_memset.c ft_strlcpy.c \
 	ft_strrchr.c ft_bzero.c ft_isascii.c ft_memcmp.c ft_strchr.c \
 	ft_strlen.c ft_tolower.c ft_calloc.c ft_isdigit.c ft_memcpy.c \
 	ft_strdup.c ft_strncmp.c ft_toupper.c ft_isalnum.c ft_isprint.c \

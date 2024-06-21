@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_utils.c                                       :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgomes-l <bgomes-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:30:13 by bgomes-l          #+#    #+#             */
-/*   Updated: 2024/06/10 19:08:48 by bgomes-l         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:43:44 by bgomes-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_check_push_args(char **args, t_stack_info *info_a, int argc)
 	info_a->args = ft_count_args(args);
 	while (args[j])
 	{
-		tmp = ft_atoi(args[j]);
+		tmp = ft_atol(args[j]);
 		if (!ft_is_num(args[j]) || ft_num_is_repeated(tmp, args, j))
 		{
 			if (argc == 2)

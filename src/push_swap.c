@@ -6,7 +6,7 @@
 /*   By: bgomes-l <bgomes-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 11:34:16 by bgomes-l          #+#    #+#             */
-/*   Updated: 2024/06/10 20:17:39 by bgomes-l         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:57:02 by bgomes-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	main(int argc, char **argv)
 	stack_a.stack = NULL;
 	stack_b.stack = NULL;
 	if (argc < 2)
-		exit(1);
+		exit(0);
 	ft_init_stack_a(&stack_a, argc, argv);
 	ft_send_nodes_to_stack_b(&stack_a, &stack_b);
 	while (stack_b.stack != NULL)

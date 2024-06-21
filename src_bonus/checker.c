@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgomes-l <bgomes-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 11:34:16 by bgomes-l          #+#    #+#             */
-/*   Updated: 2024/06/10 20:17:39 by bgomes-l         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:30:39 by bgomes-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,15 @@ t_stack_info *stack_b)
 	else if (strcmp(instruction, "ss\n") == 0)
 		ft_swap_both_bonus(stack_a, stack_b);
 	else
-	{
-		ft_free_memory_bonus(stack_b, instruction, stack_a);
-		ft_error("Error");
-	}
+		ft_error_bonus("Error", stack_a, stack_b, instruction);
+}
+
+void	ft_error_bonus(char *msg, t_stack_info *stack_a, \
+t_stack_info *stack_b, char *line)
+{
+	ft_free_memory_bonus(stack_b, line, stack_a);
+	ft_printf (2, "%s\n", msg);
+	exit(0);
 }
 
 int	ft_is_sorted_checker(t_ls_db *stack)
@@ -77,7 +82,7 @@ int	main(int argc, char **argv)
 	stack_a.stack = NULL;
 	stack_b.stack = NULL;
 	if (argc < 2)
-		exit(1);
+		exit(0);
 	ft_init_stack_a(&stack_a, argc, argv);
 	ft_set_stack(&stack_a, &stack_b);
 	ft_update_stack(&stack_a, &stack_b);

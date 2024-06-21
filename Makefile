@@ -6,7 +6,7 @@
 #    By: bgomes-l <bgomes-l@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 19:01:04 by bgomes-l          #+#    #+#              #
-#    Updated: 2024/06/10 20:08:30 by bgomes-l         ###   ########.fr        #
+#    Updated: 2024/06/21 17:01:34 by bgomes-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,6 @@ fclean: clean
 
 re: fclean all
 
-re_bonus: fclean all bonus
+re_bonus: fclean bonus
 
 .PHONY: all clean fclean re bonus
